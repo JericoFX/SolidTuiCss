@@ -34,7 +34,7 @@ const table = cva('tui-table', {
     },
   },
   defaultVariants: {
-    none: undefined,
+    striped:'{striped.color.none}'
     hover: '{hover.color.blue}',
   },
 });
