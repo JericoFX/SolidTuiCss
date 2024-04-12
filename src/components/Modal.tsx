@@ -15,7 +15,7 @@ const Modal = (props) => {
           <div class='tui-window red-168'>
             <fieldset class='tui-fieldset'>
               <legend class='yellow-255-text'>{local.legendText}</legend>
-
+              {props.children}
               <button
                 class='tui-button tui-modal-close-button right'
                 data-modal='modal'
