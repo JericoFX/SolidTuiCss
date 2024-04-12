@@ -7,12 +7,10 @@ function App() {
 
   return (
     <>
-      <Button variant={'primary'} textColor={'black168'}>
+      <Button intent={'disabled'} textColor={'black168'}>
         Jerico
       </Button>
-      <Button variant={'primary'} color={'blue168'} textColor={'red168'}>
-        Jerico
-      </Button>
+      <Button intent={'primary'}>Jerico2</Button>
     </>
   );
 }

@@ -3,12 +3,9 @@ import { cva } from 'class-variance-authority';
 import type { VariantProps } from 'class-variance-authority';
 const button = cva('tui-button', {
   variants: {
-    variant: {
-      primary: 'tui-button',
-      disabled: 'disabled',
-      focused: {
-        true: 'autofocus',
-      },
+    intent: {
+      primary: ['green-168', 'black-text'],
+      disabled: ['disabled', 'tui-button', 'gray-168-text', 'red-255'],
     },
     color: {
       black168: 'black-168',
@@ -23,6 +20,7 @@ const button = cva('tui-button', {
       green255: 'green-255',
       red255: 'red-255',
     },
+
     textColor: {
       black168: 'black-168-text',
       blue168: 'blue-168-text',
@@ -37,8 +35,20 @@ const button = cva('tui-button', {
       red255: 'red-255-text',
     },
   },
+  compoundVariants: [
+    {
+      intent: 'primary',
+      color: 'black168',
+      textColor: 'white168',
+    },
+    {
+      intent: 'disabled',
+      color: 'black168',
+      textColor: 'white168',
+    },
+  ],
   defaultVariants: {
-    variant: 'primary',
+    intent: 'primary',
     color: 'green168',
     textColor: 'white168',
   },
@@ -47,12 +57,12 @@ export type ButtonProps = VariantProps<typeof button> &
   JSX.HTMLAttributes<HTMLButtonElement>;
 
 const Button: Component<ButtonProps> = (props: ButtonProps) => {
-  const [local, others] = splitProps(props, ['variant', 'color', 'textColor']);
+  const [local, others] = splitProps(props, ['intent', 'color', 'textColor']);
   return (
     <button
       {...others}
       class={button({
-        variant: local.variant,
+        intent: local.intent,
         color: local.color,
         textColor: local.textColor,
       })}
