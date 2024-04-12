@@ -18,9 +18,9 @@ const button = cva('tui-button', {
       primary: ['green-168', 'black-text'],
       disabled: ['disabled', 'tui-button', 'gray-168-text', 'red-255'],
     },
-    color: MidColor | ChartColor,
+    color: MidColor | ChartColor | Color,
 
-    textColor: MidColor | ChartColor,
+    textColor: MidColor | ChartColor | Color,
   },
   compoundVariants: [
     {
@@ -30,14 +30,14 @@ const button = cva('tui-button', {
     },
     {
       intent: 'disabled',
-      color: 'black168',
-      textColor: 'white168',
+      color: Color.Black,
+      textColor: Color.White,
     },
   ],
   defaultVariants: {
     intent: 'primary',
-    color: 'green168',
-    textColor: 'white168',
+    color: Color.Green,
+    textColor: Color.White,
   },
 });
 export type ButtonProps = VariantProps<typeof button> &
