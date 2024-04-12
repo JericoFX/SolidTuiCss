@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <Button intent={'disabled'} textColor={'black168'}>
+      <Button intent={'disabled'}  textColor={'black168'}>
         Jerico
       </Button>
       <Button intent={'primary'}>Jerico2</Button>
