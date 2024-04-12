@@ -38,10 +38,11 @@ const table = cva('tui-table', {
     hover: '{hover.color.blue}',
   },
 });
+
 export type Table = VariantProps<typeof table> &
   JSX.HTMLAttributes<HTMLAttributes>;
 
-const Table: Component<Table> = (props: Table) => {
+export const Table: Component<Table> = (props: Table) => {
   const [local, others] = splitProps(props, ['hover', 'striped']);
   return (
     <>
@@ -52,35 +53,28 @@ const Table: Component<Table> = (props: Table) => {
   );
 };
 
-const Tfoot: Component<{}> = (props) => {
+export const Tfoot: Component<{}> = (props) => {
   return <tfoot>{props.children} </tfoot>;
 };
 
-const Tbody: Component<{}> = (props) => {
+export const Tbody: Component<{}> = (props) => {
   return <tbody>{props.children}</tbody>;
 };
 
-const Thread: Component<{ children: JSX.Element }> = (props: {
+export const Thread: Component<{ children: JSX.Element }> = (props: {
   children: JSX.Element;
 }) => {
   return <thead>{props.children}</thead>;
 };
-const Tr: Component<{ children: JSX.Element }> = (props: {
+export const Tr: Component<{ children: JSX.Element }> = (props: {
   children: JSX.Element;
 }) => {
   return <tr>{props.children}</tr>;
 };
-const Th: Component<{ children: JSX.Element }> = (props: {
+export const Th: Component<{ children: JSX.Element }> = (props: {
   children: JSX.Element;
 }) => {
-  return <th>{props.children}</th>;
+     const [local, others] = splitProps(props, ['onClick']);
+  return <th onClick={local.onClick}>{props.children}</th>;
 };
 
-export {
-    Table.Root: Table,
-    Table.TFoot: Tfoot,
-    Table.TBody: Tbody,
-    Table.Thread: Thread,
-    Table.Tr: Tr,
-    Table.Th: Th
-}

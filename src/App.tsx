@@ -1,5 +1,5 @@
 import { createSignal } from 'solid-js';
-
+import * as Table from "./components/Table"
 import Button from './components/Button';
 
 function App() {
@@ -11,6 +11,11 @@ function App() {
         Jerico
       </Button>
       <Button intent={'primary'}>Jerico2</Button>
+      <Table.Root>
+        <Table.Thread>
+          
+        </Table.Thread>
+      </Table.Root>
     </>
   );
 }
