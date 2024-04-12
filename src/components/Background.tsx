@@ -6,13 +6,16 @@ const background = cva('tui-background', {
   variants: {
     color: DarkBackground | LightBackground | Background,
   },
+  defaultVariants: {
+    color: DarkBackground.Blue,
+  },
 });
 export type Background = VariantProps<typeof background> &
   JSX.HTMLAttributes<HTMLAttributes>;
 
 const Background: Component<Background> = (props: Background) => {
   const [local, others] = splitProps(props, ['color']);
-  return <div class={local.color}></div>;
+  return <div class={background({ color: local.color })}></div>;
 };
 
 export default Background;
