@@ -12,6 +12,8 @@ import {
   ScreenSize,
 } from '../types';
 import type { VariantProps } from 'class-variance-authority';
+
+
 const button = cva('tui-button', {
   variants: {
     intent: {
@@ -25,8 +27,8 @@ const button = cva('tui-button', {
   compoundVariants: [
     {
       intent: 'primary',
-      color: 'black168',
-      textColor: 'white168',
+      color: Color.Black,
+      textColor: Color.White,
     },
     {
       intent: 'disabled',
