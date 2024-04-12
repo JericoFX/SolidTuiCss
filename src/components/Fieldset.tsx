@@ -35,7 +35,7 @@ const Fieldset: Component<Fieldset> = (props: Fieldset) => {
         when={local.legend}
         fallback={props.children}
         >
-            <legend>{local.legend}</legend>
+        <legend>{local.legend}</legend>
             {props.children}
         </Show>
     </div>
