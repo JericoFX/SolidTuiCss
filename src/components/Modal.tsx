@@ -1,8 +1,7 @@
-import { Component } from 'solid-js';
+import { Component, splitProps } from 'solid-js';
 
 const Modal = (props) => {
   const [local, other] = splitProps(props, ['open', 'legendText']);
-
   return (
     <>
       <Show when={local.open}>
