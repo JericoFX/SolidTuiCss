@@ -24,18 +24,33 @@ const fieldset = cva('tui-fieldset', {
     size:full
   },
 });
+
+const legend = cva("tui-legend",{
+  variants:{
+    position:{
+      center:"center",
+      left:"left",
+      right:"right"
+    }
+  },
+  defaultVariants:{
+    position:"center"
+  }
+})
+
 export type Fieldset = VariantProps<typeof fieldset> &
   JSX.HTMLAttributes<HTMLAttributes>;
-
-const Fieldset: Component<Fieldset> = (props: Fieldset) => {
-  const [local, others] = splitProps(props, ['border',"legend","size"]);
+export type Legend = VariantProps<typeof legend> &
+  JSX.HTMLAttributes<HTMLAttributes>;
+const Fieldset: Component<Fieldset & Legend> = (props: Fieldset & Legend) => {
+  const [local, others] = splitProps(props, ['border',"legend","size","legendPosition"]);
   return <>
     <div class={fieldset({fieldset:true, border: local.border,size:local.size })}>
         <Show
         when={local.legend}
         fallback={props.children}
         >
-        <legend>{local.legend}</legend>
+        <legend class={legend({position:local.legendPosition})}>{local.legend}</legend>
             {props.children}
         </Show>
     </div>
