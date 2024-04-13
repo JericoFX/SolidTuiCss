@@ -1,18 +1,7 @@
 import { Component, JSX, splitProps } from 'solid-js';
 import { cva } from 'class-variance-authority';
-import {
-  Color,
-  MildColor,
-  ChartColor,
-  DarkBackground,
-  LightBackground,
-  Background,
-  Position,
-  TableRowColor,
-  ScreenSize,
-} from '../types';
+import { Color, MildColor, ChartColor } from '../types/colors';
 import type { VariantProps } from 'class-variance-authority';
-
 
 const button = cva('tui-button', {
   variants: {
@@ -20,26 +9,26 @@ const button = cva('tui-button', {
       primary: ['green-168', 'black-text'],
       disabled: ['disabled', 'tui-button', 'gray-168-text', 'red-255'],
     },
-    color: MidColor | ChartColor | Color,
+    color: MildColor || ChartColor || Color,
 
-    textColor: MidColor | ChartColor | Color,
+    textColor: MildColor || ChartColor || Color,
   },
   compoundVariants: [
     {
       intent: 'primary',
-      color: Color.Black,
-      textColor: Color.White,
+      color: 'Black',
+      textColor: 'White',
     },
     {
       intent: 'disabled',
-      color: Color.Black,
-      textColor: Color.White,
+      color: 'Black',
+      textColor: 'White',
     },
   ],
   defaultVariants: {
     intent: 'primary',
-    color: Color.Green,
-    textColor: Color.White,
+    color: 'Green',
+    textColor: 'White',
   },
 });
 export type ButtonProps = VariantProps<typeof button> &
