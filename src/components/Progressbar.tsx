@@ -4,19 +4,18 @@ import { DarkBackground, LightBackground, Background } from '../types';
 import type { VariantProps } from 'class-variance-authority';
 const progress = cva('tui-progress-bar', {
   variants: {
-    background: Background | LightBackground | DarkBackground | undefined,
+    background: Background || LightBackground || DarkBackground || undefined,
     type: {
       none: undefined,
       intermediate: 'tui-indeterminate',
     },
   },
   defaultVariants: {
-    background: undefined,
-    type: none,
+    background: 'undefined',
+    type: 'none',
   },
 });
-export type Progress = VariantProps<typeof progress> &
-  JSX.HTMLAttributes<HTMLAttributes>;
+export type Progress = VariantProps<typeof progress>;
 
 const Progress: Component<Progress> = (props: Progress) => {
   const [local, others] = splitProps(props, [
