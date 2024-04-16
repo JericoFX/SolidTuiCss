@@ -15,7 +15,20 @@ const fieldset = cva({
     },
     dotted: {
       true: {
-        border: '6px white dotted',
+        borderStyle: 'dotted !important',
+        borderWidth: '2px !important',
+      },
+    },
+    solid: {
+      true: {
+        borderStyle: 'solid !important',
+        borderWidth: '2px !important',
+      },
+    },
+    doble: {
+      true: {
+        borderStyle: 'double !important',
+        borderWidth: '6px !important',
       },
     },
   },

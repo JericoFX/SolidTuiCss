@@ -32,6 +32,32 @@ const tbutton = cva({
         textDecoration: 'line-through',
       },
     },
+    color: {
+      Black168: { backgroundColor: 'rgb(0, 0, 0) !important' },
+      Blue168: { backgroundColor: 'rgb(0, 0, 168) !important' },
+      Green168: { backgroundColor: 'rgb(0, 168, 0) !important' },
+      Cyan168: { backgroundColor: 'rgb(0, 168, 168) !important' },
+      Red168: { backgroundColor: 'rgb(168, 0, 0) !important' },
+      Purple168: { backgroundColor: 'rgb(168, 0, 168) !important' },
+      Yellow168: { backgroundColor: 'rgb(168, 168, 0) !important' },
+      White168: { backgroundColor: 'rgb(168, 168, 168) !important' },
+      Orange168: { backgroundColor: 'rgb(168, 86, 0) !important' },
+    },
+    textColor: {
+      Black168Text: { color: 'rgb(0, 0, 0) !important' },
+      Blue168Text: { color: 'rgb(0, 0, 168) !important' },
+      Green168Text: { color: 'rgb(0, 168, 0) !important' },
+      Cyan168Text: { color: 'rgb(0, 168, 168) !important' },
+      Red168Text: { color: 'rgb(168, 0, 0) !important' },
+      Purple168Text: { color: 'rgb(168, 0, 168) !important' },
+      Yellow168Text: { color: 'rgb(168, 168, 0) !important' },
+      White168Text: { color: 'rgb(168, 168, 168) !important' },
+      Orange168Text: { color: 'rgb(168, 86, 0) !important' },
+    },
+  },
+  defaultVariants: {
+    color: 'Green168',
+    textColor: 'Black168Text',
   },
 });
 
@@ -43,11 +69,21 @@ export type ButtonVariants = RecipeVariantProps<typeof tbutton> & {
   onClick?: () => void;
 };
 const TuiButton: Component<> = (props) => {
-  const [local, other] = splitProps(props, ['text', 'disabled', 'onClick']);
+  const [local, other] = splitProps(props, [
+    'text',
+    'disabled',
+    'onClick',
+    'color',
+    'textColor',
+  ]);
   return (
     <button
       onClick={local.onClick}
-      class={tbutton({ disabled: local.disabled })}
+      class={tbutton({
+        disabled: local.disabled,
+        color: local.color,
+        textColor: local.textColor,
+      })}
     >
       {local.text}
     </button>
