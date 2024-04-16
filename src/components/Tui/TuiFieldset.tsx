@@ -31,6 +31,12 @@ const fieldset = cva({
         borderWidth: '6px !important',
       },
     },
+    dashed: {
+      true: {
+        borderStyle: 'dashed !important',
+        borderWidth: '2px !important',
+      },
+    },
   },
 });
 
