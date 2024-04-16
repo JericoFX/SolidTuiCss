@@ -1,1 +1,22 @@
 @layer reset, base, tokens, recipes, utilities;
+
+@font-face {
+  font-family: 'DOS';
+  src: url('./fonts/Perfect DOS VGA 437 Win.ttf');
+}
+
+html {
+  font-family: 'Lucida Console', 'monospace';
+  font-size: 18px;
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  font-family: inherit;
+  font-size: inherit;
+  box-sizing: inherit;
+}
+body {
+  margin: 0px;
+}

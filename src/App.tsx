@@ -1,9 +1,9 @@
 import { createSignal } from 'solid-js';
-import { cva, type RecipeVariantProps } from '../styled-system/css';
+import { cva } from '../styled-system/css';
 import { styled } from '../styled-system/jsx';
-import TuiCheckbox from './components/Tui/TuiCheckbox';
-import Screen from './components/Screen';
-import TuiTable from './components/Tui/TuiTable';
+import { TuiScreenLarge } from './components/Tui/TuiScreen';
+import TuiFieldset from './components/Tui/TuiFieldset';
+
 const buttons = cva({
   className: 'tui-button',
   base: {
@@ -156,9 +156,9 @@ function App() {
 
   return (
     <>
-      <Screen backgroundColor='BlueBlack' center size='lg'>
-        <TuiTable></TuiTable>
-      </Screen>
+      <TuiScreenLarge bordered={true} backgroundColor='OrangeBlack' centered>
+        <TuiFieldset full legend='Jerico'></TuiFieldset>
+      </TuiScreenLarge>
     </>
   );
 }

@@ -1,51 +1,6 @@
-import { Component } from 'solid-js';
-import { cva, sva } from '../../../styled-system/css';
+import { cva } from '../../../styled-system/css';
 import { styled } from '../../../styled-system/jsx';
-import { TableHoverColor, TableStrippedColor } from '../../types/colors';
-// const table = sva({
-//   className: 'tui-table',
-//   slots: ['table', 'thead', 'tbody', 'tfoot'],
-//   base: {
-//     table: {
-//       border: '2px solid rgb(168, 168, 168)',
-//       padding: '5px',
-//       borderCollapse: 'collapse',
-//     },
-//     tbody: {
-//       backgroundColor: 'inherit',
-//       color: 'white',
-//       '&:tr td': {
-//         borderRight: '2px solid rgb(168, 168, 168)',
-//         padding: '0px 2px',
-//       },
-//     },
-//     thead: {
-//       backgroundColor: 'inherit',
-//       color: 'rgb(255, 255, 0)',
-//       textAlign: 'center',
-//     },
-//     tfoot: {
-//       backgroundColor: 'inherit',
-//       color: 'rgb(255, 255, 0)',
-//       textAlign: 'center',
-//     },
-//   },
-//   variants: {
-//     hover: {
-//       cyan: {
-//         tbody: {
-//           _hover: {
-//             backgroundColor: 'rgb(0, 255, 255) !important',
-//             color: 'black',
-//           },
-//         },
-//       },
-//     },
-//   },
-//   defaultVariants: {
-//     hover: 'cyan',
-//   },
-// });
+
 const ttable = cva({
   base: {
     border: '2px solid rgb(168, 168, 168)',
@@ -68,7 +23,6 @@ const ttable = cva({
     },
   },
 });
-
 const tbody = cva({
   base: {
     backgroundColor: 'inherit',
@@ -172,7 +126,6 @@ const thead = cva({
     textAlign: 'center',
   },
 });
-
 const tfoot = cva({
   base: {
     backgroundColor: 'inherit',
@@ -181,43 +134,8 @@ const tfoot = cva({
   },
 });
 
-export const Root = styled('table', ttable);
-export const Tbody = styled('tbody', tbody);
-export const Thead = styled('thead', thead);
-const TuiTable: Component<{}> = (props) => {
-  return (
-    <Root border='borderRight'>
-      <Thead>
-        <tr>
-          <td>Name</td>
-          <td>Grade</td>
-          <td>Isboss</td>
-        </tr>
-      </Thead>
-      <Tbody hover='red' stripped='white'>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-      </Tbody>
-    </Root>
-  );
-};
-
-export default TuiTable;
+const Root = styled('table', ttable);
+const Tbody = styled('tbody', tbody);
+const Thead = styled('thead', thead);
+const Tfoot = styled('tfoot', tfoot);
+export { Root, Tbody, Thead, Tfoot };
