@@ -73,8 +73,7 @@ export enum Position {
   Absolute = 'absolute',
   Fixed = 'fixed',
   Relative = 'relative',
-    Static = 'static',
-  
+  Static = 'static',
 }
 
 export enum TableRowColor {
@@ -91,4 +90,25 @@ export enum ScreenSize {
   Small = 'tui-screen-640-480',
   Med = 'tui-screen-800-600',
   Large = 'tui-screen-1024-768',
+}
+
+export enum TableHoverColor {
+  Blue = 'rgb(0, 0, 255) !important',
+  Green = 'rgb(0, 255, 0) !important',
+  Cyan = 'rgb(0, 255, 255) !important',
+  Red = 'rgb(255, 0, 0) !important',
+  Purple = 'rgb(255, 0, 255) !important',
+  Yellow = 'rgb(255, 255, 0) !important',
+  White = 'rgb(255, 255, 255) !important',
+  Orange = 'rgb(255, 165, 0) !important',
+}
+export enum TableStrippedColor {
+  Blue = 'rgb(0, 0, 168) !important',
+  Green = 'rgb(0, 168, 0) !important',
+  Cyan = 'rgb(0, 168, 168) !important',
+  Red = 'rgb(168, 0, 0) !important',
+  Purple = 'rgb(168, 0, 168) !important',
+  Yellow = 'rgb(168, 168, 0) !important',
+  White = 'rgb(168, 168, 168) !important',
+  Orange = 'rgb(168, 86, 0) !important',
 }
