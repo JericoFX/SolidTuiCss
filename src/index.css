@@ -20,3 +20,12 @@ html {
 body {
   margin: 0px;
 }
+
+@keyframes indeterminate {
+  from {
+    margin-left: -10%;
+  }
+  to {
+    margin-left: 100%;
+  }
+}
