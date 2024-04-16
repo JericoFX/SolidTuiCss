@@ -4,7 +4,7 @@ const progress = sva({
   className: 'tui-progress',
   slots: ['progress', 'label', 'intermediate'],
   base: {
-    progress: {
+    base: {
       display: 'block',
       position: 'relative',
       height: '20px',
@@ -19,30 +19,91 @@ const progress = sva({
       transform: 'translateX(-50%) translateY(-50%)',
       zIndex: 1,
     },
-    intermediate: {
+    progress: {
       position: 'absolute',
       left: '0px',
       backgroundColor: 'rgb(0, 255, 255)',
-      height: '20px',
-      width: '20px',
+      height: '100%',
       display: 'inline-block',
-      animation: 'indeterminate 1s backwards',
-      animationIterationCount: 'infinite',
-      animationTimingFunction: 'linear',
     },
+  },
+  variants: {
+    backgroundColor: {
+      GreenWhite: {
+        backgroundImage: 'url("./images/bg-green-white.png")',
+        backgroundRepeat: 'repeat',
+      },
+      GreenBlack: {
+        backgroundImage: 'url("./images/bg-green-black.png")',
+        backgroundRepeat: 'repeat',
+      },
+      CyanWhite: {
+        backgroundImage: 'url("./images/bg-cyan-white.png")',
+        backgroundRepeat: 'repeat',
+      },
+      CyanBlack: {
+        backgroundImage: 'url("./images/bg-cyan-black.png")',
+        backgroundRepeat: 'repeat',
+      },
+      RedWhite: {
+        backgroundImage: 'url("./images/bg-red-white.png")',
+        backgroundRepeat: 'repeat',
+      },
+      RedBlack: {
+        backgroundImage: 'url("./images/bg-red-black.png")',
+        backgroundRepeat: 'repeat',
+      },
+      PurpleWhite: {
+        backgroundImage: 'url("./images/bg-purple-white.png")',
+        backgroundRepeat: 'repeat',
+      },
+      PurpleBlack: {
+        backgroundImage: 'url("./images/bg-purple-black.png")',
+        backgroundRepeat: 'repeat',
+      },
+      YellowWhite: {
+        backgroundImage: 'url("./images/bg-yellow-black.png")',
+        backgroundRepeat: 'repeat',
+      },
+      OrangeWhite: {
+        backgroundImage: 'url("./images/bg-orange-white.png")',
+        backgroundRepeat: 'repeat',
+      },
+      OrangeBlack: {
+        backgroundImage: 'url("./images/bg-orange-black.png")',
+        backgroundRepeat: 'repeat',
+      },
     },
-    variants: {
-        background: {
-          
-      }
-  }
+    intermediate: {
+      true: {
+        position: 'absolute',
+        left: '0px',
+        backgroundColor: 'rgb(0, 255, 255)',
+        height: '20px',
+        width: '20px',
+        display: 'inline-block',
+        animation: 'indeterminate 1s backwards',
+        animationIterationCount: 'infinite',
+        animationTimingFunction: 'linear',
+      },
+    },
+  },
 });
 
 const TuiProgressBar: Component<{}> = (props) => {
+  const [local, others] = splitProps(props, [
+    'background',
+    'width',
+    'intermediate',
+  ]);
+  const progresss = progress({
+    backgroundColor: local.background,
+    intermediate: local.intermediate,
+  });
   return (
-    <div class='tui-progress-bar'>
-      <span class='tui-progress-label'>50%</span>
-      <span class='tui-progress' style='width: 50%'></span>
+    <div class={progresss.base}>
+      <span class={progresss.label}>${local.width}</span>
+      <span class={progresss.progress} style={{ width: local.width }}></span>
     </div>
   );
 };
