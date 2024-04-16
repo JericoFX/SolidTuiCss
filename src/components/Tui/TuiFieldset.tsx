@@ -42,12 +42,12 @@ const legend = cva({
   },
 });
 import { Component, JSX, Show, createMemo, splitProps } from 'solid-js';
-export type ButtonVariants = RecipeVariantProps<typeof fieldset> & {
+export type FiedlSetVariants = RecipeVariantProps<typeof fieldset> & {
   legend?: string;
   children?: JSX.Element;
   full?: boolean;
 } & RecipeVariantProps<typeof legend>;
-const TuiFieldset: Component<ButtonVariants> = (props: ButtonVariants) => {
+const TuiFieldset: Component<FiedlSetVariants> = (props: FiedlSetVariants) => {
   const [local, others] = splitProps(props, [
     'legend',
     'noLegend',
