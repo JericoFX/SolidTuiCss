@@ -35,12 +35,19 @@ const TuiModal: Component<ModalVariant> = (props) => {
     <>
       <Show when={local.open}>
         <Portal>
-          <div class={overlap()}></div>
-          <div class={modal()}>
-            <TuiWindow backgroundColor={local.backgroundColor}>
-              {props.children}
-            </TuiWindow>
-          </div>
+          <VStack
+            w='100%'
+            h='100%'
+            justifyContent='center'
+            alignContent='center'
+          >
+            <div class={overlap()}></div>
+            <div class={modal()}>
+              <TuiWindow backgroundColor={local.backgroundColor}>
+                {props.children}
+              </TuiWindow>
+            </div>
+          </VStack>
         </Portal>
       </Show>
     </>
