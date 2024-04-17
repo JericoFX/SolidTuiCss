@@ -6,7 +6,7 @@ const radio = cva({
     position: 'relative',
     cursor: 'pointer',
     color: 'white',
-    paddingLeft: 30,
+    paddingLeft: '35px',
     userSelect: 'none',
   },
   variants: {
@@ -38,17 +38,29 @@ const span = cva({
   },
 });
 
-import { Component, JSX } from 'solid-js';
+import { Component, JSX, splitProps } from 'solid-js';
 export type RadioButton = RecipeVariantProps<typeof radio> &
   RecipeVariantProps<typeof input> &
   RecipeVariantProps<typeof span> &
   JSX.IntrinsicElements['label'] &
   JSX.IntrinsicElements['input'];
 const TuiRadio: Component<RadioButton> = (props) => {
+  const [local, others] = splitProps(props, [
+    'onChange',
+    'disabled',
+    'value',
+    'label',
+  ]);
   return (
-    <label class={radio({ disabled: props.disabled })}>
-      Default
-      <input class={input()} type='radio' name='group' />
+    <label class={radio({ disabled: local.disabled })}>
+      {local.label}
+      <input
+        value={local.value}
+        onChange={local.onChange}
+        class={input()}
+        type='radio'
+        name='group'
+      />
       <span class={span()}></span>
     </label>
   );

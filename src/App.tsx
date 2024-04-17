@@ -1,4 +1,4 @@
-import { createSignal } from 'solid-js';
+import { createEffect, createSignal } from 'solid-js';
 import { cva } from '../styled-system/css';
 import { HStack, VStack, styled } from '../styled-system/jsx';
 import { TuiScreenLarge } from './components/Tui/TuiScreen';
@@ -155,8 +155,8 @@ const buttons = cva({
 });
 const Button = styled('button', buttons);
 function App() {
-  const [count, setCount] = createSignal(0);
-
+  const [count, setCount] = createSignal('');
+  createEffect(() => console.log(count()));
   return (
     <>
       <TuiScreenLarge bordered={true} backgroundColor='OrangeBlack' centered>
@@ -173,11 +173,35 @@ function App() {
             <TuiInput hasLabel text='Grade'></TuiInput>
             <br></br>
             <TuiInput hasLabel text='IsBoss'></TuiInput>
-            <TuiRadio></TuiRadio>
-            <TuiRadio></TuiRadio>
-            <TuiRadio></TuiRadio>
-            <TuiRadio></TuiRadio>
-            <TuiRadio></TuiRadio>
+            <TuiWindow>
+              <TuiFieldset legend='Jerico'>
+                <TuiRadio
+                  label='jerico1'
+                  onChange={(e) => console.log(e.target.value)}
+                  value='jerico1'
+                ></TuiRadio>
+                <TuiRadio
+                  label='jerico2'
+                  onChange={(e) => console.log(e.target.value)}
+                  value='jerico2'
+                ></TuiRadio>
+                <TuiRadio
+                  label='jerico3'
+                  onChange={(e) => console.log(e.target.value)}
+                  value='jerico3'
+                ></TuiRadio>
+                <TuiRadio
+                  label='jerico4'
+                  onChange={(e) => console.log(e.target.value)}
+                  value='jerico4'
+                ></TuiRadio>
+                <TuiRadio
+                  label='jerico5'
+                  onChange={(e) => console.log(e.target.value)}
+                  value='jerico5'
+                ></TuiRadio>
+              </TuiFieldset>
+            </TuiWindow>
           </TuiFieldset>
         </VStack>
       </TuiScreenLarge>
