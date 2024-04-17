@@ -1,5 +1,7 @@
-import { cva } from 'class-variance-authority';
-import type { VariantProps } from 'class-variance-authority';
+import { cva } from '../../../styled-system/css/cva';
+import { RecipeVariantProps } from '../../../styled-system/types';
+
+import { Component, JSX, splitProps } from 'solid-js';
 const tbutton = cva({
   base: {
     display: 'inline-block',
@@ -13,10 +15,6 @@ const tbutton = cva({
     boxShadow: '10px 10px black',
     borderRadius: '0px',
     userSelect: 'none',
-    WebkitUserSelect: 'none',
-    KhtmlUserSelect: 'none',
-    MozUserSelect: 'none',
-    msUserSelect: 'none',
     _active: {
       backgroundColor: 'rgb(0, 168, 168) !important',
       color: 'black !important',
@@ -61,14 +59,13 @@ const tbutton = cva({
   },
 });
 
-import { Component } from 'solid-js';
 export type ButtonVariants = RecipeVariantProps<typeof tbutton> & {
   text?: string;
   children?: JSX.Element;
   disabled?: boolean;
   onClick?: () => void;
 };
-const TuiButton: Component<> = (props) => {
+const TuiButton: Component<ButtonVariants> = (props) => {
   const [local, other] = splitProps(props, [
     'text',
     'disabled',

@@ -1,59 +1,12 @@
-import {
-  css,
-  cva,
-  sva,
-  type RecipeVariantProps,
-} from '../../../styled-system/css';
-import { Switch, Match, Component, For } from 'solid-js';
-const checkbos = sva({
-  className: 'tui-checkbox',
-  slots: ['label', 'input', 'span'],
-  base: {
-    label: {
-      display: 'block',
-      position: 'relative',
-      cursor: 'pointer',
-      color: 'white',
-      paddingLeft: '30px',
-      userSelect: 'none',
-      _disabled: {
-        color: 'rgb(168, 168, 168)',
-      },
-    },
-    input: {
-      position: 'absolute',
-      opacity: 0,
-      cursor: 'pointer',
-      top: '0px',
-      left: '0px',
-      pointerEvents: 'none',
-      '&:checked ~ span::after': {
-        content: '"[√]"',
-        color: 'rgb(0, 255, 255)',
-      },
-      '&:not(checked) ~ span::after': { content: '"[]"' },
-    },
-    span: {
-      position: 'absolute',
-      width: '10px',
-      height: '10px',
-      cursor: 'pointer',
-      top: '0px',
-      left: '0px',
-    },
-  },
-  defaultVariants: {
-    backgroundColor: 'green-168',
-    textColor: 'black-168',
-  },
-});
-const tinput = cva({
+import { css, cva, type RecipeVariantProps } from '../../../styled-system/css';
+import { Component, JSX, Show, splitProps } from 'solid-js';
+const timput = cva({
   base: {
     backgroundColor: 'rgb(0, 0, 0)',
     color: 'white',
-    outline: '0',
+    outline: 0,
     border: 'none',
-    borderRadius: '0px',
+    borderRadius: 0,
     _focus: {
       backgroundColor: 'rgb(255, 255, 0) !important',
       color: 'black !important',
@@ -69,147 +22,89 @@ const tinput = cva({
   },
 });
 
-const tradio = cva({
+const tlabel = cva({
   base: {
-    display: 'block',
-    position: 'relative',
-    cursor: 'pointer',
     color: 'white',
-    paddingLeft: '30px',
-    userSelect: 'none',
-    WebkitUserSelect: 'none',
-    KhtmlUserSelect: 'none',
-    MozUserSelect: 'none',
-    msUserSelect: 'none',
-    '& input': {
-      position: 'absolute',
-      opacity: 0,
-      cursor: 'pointer',
-      top: '0px',
-      left: '0px',
-      pointerEvents: 'none',
-    },
-    '& span': {
-      position: 'absolute',
-      width: '10px',
-      height: '10px',
-      cursor: 'pointer',
-      top: '0px',
-      left: '0px',
-    },
-    '& input:checked ~ span:after': {
-      content: '"(•)"',
-      color: 'rgb(0, 255, 255) !important',
-    },
-    '& input:not(checked) ~ span:after': { content: '"()"' },
+    w: '100px',
+    display: 'inline-block',
+    marginRight: '10px',
   },
   variants: {
     disabled: {
       true: {
-        color: 'rgb(168, 168, 168)',
+        color: 'black',
+      },
+    },
+    size: {
+      sm: {
+        w: '70px',
+        marginRight: '5px',
+      },
+    },
+    color: {
+      variant: {
+        red: 'red',
+        green: 'green',
+        blue: 'blue',
+        yellow: 'yellow',
+        purple: 'purple',
+        cyan: 'cyan',
+        white: 'white',
+        orange: 'orange',
+        black: 'black',
+        gray: 'gray',
+        pink: 'pink',
+        brown: 'brown',
+        gold: 'gold',
       },
     },
   },
 });
+export type InputVariants = RecipeVariantProps<typeof timput> & {
+  hasLabel?: boolean;
+  text?: string;
+  disabled?: boolean;
+  onClick?: () => void;
+} & JSX.IntrinsicElements['input'] &
+  JSX.IntrinsicElements['label'] &
+  RecipeVariantProps<typeof tlabel>;
+//export const TuiInput = styled('input', timput);
 
-export const TuiInput = style('input', tinput);
-
-const TuiInput: Component<{}> = (props) => {
-  const [selected, setSelected] = createSignal('');
-  const [checked, setChecked] = createSignal(false);
-  const [local, other] = splitProps(props, [
+const TuiInput: Component<InputVariants> = (props) => {
+  var numero1 = Math.floor(Math.random() * 100).toString(16);
+  const [local, others] = splitProps(props, [
+    'hasLabel',
     'disabled',
+    'onClick',
+    'text',
+    'size',
+    'color',
     'type',
-    'onChanged',
-    'placeholder',
-    'selectValues',
-    'label',
   ]);
-  const onChangeded = (e) => {
-    setSelected(e.target.value);
-    local.onChanged(e.target.value);
-  };
-  const onCheked = (e) => {
-    local.onChanged(e.currentTarget.checked);
-    setChecked(e.currentTarget.checked);
-  };
   return (
-    <Switch
-      fallback={
-        <input
-          disabled={local.disabled}
-          onChange={local.onChanged}
-          class={tinput({ disabled: local.disabled })}
-          placeholder={local.placeholder ? local.placeholder : ''}
-          type='text'
-        />
-      }
+    <Show
+      when={local.hasLabel}
+      fallback={<input class={timput({ disabled: local.disabled })}></input>}
     >
-      <Match when={local.type === 'number'}>
-        <input
-          disabled={local.disabled}
-          onChange={local.onChanged}
-          class={tinput({ disabled: local.disabled })}
-          placeholder={local.placeholder ? local.placeholder : ''}
-          min={0}
-          type='number'
-        />
-      </Match>
-      <Match when={local.type === 'color'}>
-        <input
-          disabled={local.disabled}
-          onChange={local.onChanged}
-          class={tinput({ disabled: local.disabled })}
-          placeholder={local.placeholder ? local.placeholder : ''}
-          type='color'
-        />
-      </Match>
-      <Match when={local.type === 'select'}>
-        <select
-          value={selected()}
-          disabled={local.disabled}
-          onChange={onChangeded}
-          class={tinput({ disabled: local.disabled })}
-          placeholder={local.placeholder ? local.placeholder : ''}
+      <div>
+        <label
+          class={tlabel({
+            disabled: local.disabled,
+            size: local.size,
+            color: local.color,
+          })}
+          for={numero1}
         >
-          <For each={local.selectValues}>
-            {(value, index) => {
-              <option key={index} value={value}>
-                {value}
-              </option>;
-            }}
-          </For>
-        </select>
-      </Match>
-      <Match when={local.type === 'date'}>
+          {local.text}
+        </label>
         <input
-          disabled={local.disabled}
-          onChange={local.onChanged}
-          class={tinput({ disabled: local.disabled })}
-          placeholder={local.placeholder ? local.placeholder : ''}
-          type='date'
-        />
-      </Match>
-      <Match when={local.type === 'checkbox'}>
-        <label class={checkbox.label}>
-          {local.label}
-          <input
-            onChange={onCheked}
-            checked={checked()}
-            class={checkbox.input}
-            type='checkbox'
-          />
-          <span class={checkbox.span}></span>
-        </label>
-      </Match>
-      <Match when={local.type === 'radio'}>
-        <label checked={checked()} class={tradio({ disabled: local.disabled })}>
-          {local.label}
-          <input onChange={onCheked} type='radio' name='group' />
-          <span></span>
-        </label>
-      </Match>
-    </Switch>
+          type={local.type || 'text'}
+          min={0}
+          id={numero1}
+          class={timput({ disabled: local.disabled })}
+        ></input>
+      </div>
+    </Show>
   );
 };
 

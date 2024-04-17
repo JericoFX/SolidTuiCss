@@ -1,5 +1,6 @@
 import { css, cva, type RecipeVariantProps } from '../../../styled-system/css';
-
+import { Component, JSX, Show, createMemo, splitProps } from 'solid-js';
+import { styled } from '../../../styled-system/jsx';
 const fieldset = cva({
   base: {
     border: '6px white double',
@@ -38,6 +39,9 @@ const fieldset = cva({
       },
     },
   },
+  defaultVariants: {
+    noLegend: true,
+  },
 });
 
 const legend = cva({
@@ -60,7 +64,7 @@ const legend = cva({
     },
   },
 });
-import { Component, JSX, Show, createMemo, splitProps } from 'solid-js';
+
 export type FiedlSetVariants = RecipeVariantProps<typeof fieldset> & {
   legend?: string;
   children?: JSX.Element;
@@ -96,6 +100,7 @@ const TuiFieldset: Component<FiedlSetVariants> = (props: FiedlSetVariants) => {
         >
           {local.legend}
         </legend>
+        {props.children}
       </Show>
     </fieldset>
   );

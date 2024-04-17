@@ -1,0 +1,8 @@
+input:checked ~ span:after {
+  content: '(•)';
+  color: rgb(0, 255, 255) !important;
+}
+
+input:not(checked) ~ span:after {
+  content: '( )';
+}

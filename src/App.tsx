@@ -1,8 +1,11 @@
 import { createSignal } from 'solid-js';
 import { cva } from '../styled-system/css';
-import { styled } from '../styled-system/jsx';
+import { HStack, VStack, styled } from '../styled-system/jsx';
 import { TuiScreenLarge } from './components/Tui/TuiScreen';
 import TuiFieldset from './components/Tui/TuiFieldset';
+import TuiInput from './components/Tui/TuiInput';
+import { TuiWindow } from './components/Tui/TuiWindow';
+import TuiRadio from './components/Tui/TuiRadio';
 
 const buttons = cva({
   className: 'tui-button',
@@ -157,7 +160,26 @@ function App() {
   return (
     <>
       <TuiScreenLarge bordered={true} backgroundColor='OrangeBlack' centered>
-        <TuiFieldset full legend='Jerico'></TuiFieldset>
+        <VStack
+          w='100%'
+          h='100%'
+          alignContent='center'
+          justifyContent='center'
+          gap={2}
+        >
+          <TuiFieldset>
+            <TuiInput hasLabel type='text' text='Name'></TuiInput>
+            <br></br>
+            <TuiInput hasLabel text='Grade'></TuiInput>
+            <br></br>
+            <TuiInput hasLabel text='IsBoss'></TuiInput>
+            <TuiRadio></TuiRadio>
+            <TuiRadio></TuiRadio>
+            <TuiRadio></TuiRadio>
+            <TuiRadio></TuiRadio>
+            <TuiRadio></TuiRadio>
+          </TuiFieldset>
+        </VStack>
       </TuiScreenLarge>
     </>
   );
