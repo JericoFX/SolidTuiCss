@@ -65,6 +65,7 @@ export type ButtonVariants = RecipeVariantProps<typeof tbutton> & {
   disabled?: boolean;
   onClick?: () => void;
 } & JSX.IntrinsicElements['button'];
+
 const TuiButton: Component<ButtonVariants> = (props) => {
   const [local, other] = splitProps(props, [
     'text',

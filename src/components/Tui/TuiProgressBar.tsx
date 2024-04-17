@@ -1,4 +1,4 @@
-import { Component } from 'solid-js';
+import { Component, JSX } from 'solid-js';
 import { css, cva, type RecipeVariantProps } from '../../../styled-system/css';
 const progress = sva({
   className: 'tui-progress',
@@ -89,6 +89,10 @@ const progress = sva({
     },
   },
 });
+
+export type ProgressBar = RecipeVariantProps<typeof progress> &
+  JSX.IntrinsicElements['div'] &
+  JSX.IntrinsicElements['span'];
 
 const TuiProgressBar: Component<{}> = (props) => {
   const [local, others] = splitProps(props, [
