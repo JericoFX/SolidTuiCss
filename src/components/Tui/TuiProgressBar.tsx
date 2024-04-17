@@ -92,9 +92,13 @@ const progress = sva({
 
 export type ProgressBar = RecipeVariantProps<typeof progress> &
   JSX.IntrinsicElements['div'] &
-  JSX.IntrinsicElements['span'];
+  JSX.IntrinsicElements['span'] & {
+    background?: string;
+    width?: number;
+    intermediate?: boolean;
+  };
 
-const TuiProgressBar: Component<{}> = (props) => {
+const TuiProgressBar: Component<ProgressBar> = (props) => {
   const [local, others] = splitProps(props, [
     'background',
     'width',
