@@ -1,5 +1,5 @@
 import { RecipeVariantProps, cva } from '../../../styled-system/css';
-import './TuiRadio.css';
+// import './TuiRadio.css';
 const radio = cva({
   base: {
     display: 'block',
@@ -25,6 +25,14 @@ const input = cva({
     top: 0,
     left: 0,
     pointerEvents: 'none',
+    '&:checked ~ span::after': {
+      content: '"(•)"',
+      color: 'rgb(0, 255, 255) !important',
+    },
+    '&:not(checked) ~ span:after': {
+      padding: 'right 3px',
+      content: '"( )"',
+    },
   },
 });
 const span = cva({
@@ -50,6 +58,7 @@ const TuiRadio: Component<RadioButton> = (props) => {
     'disabled',
     'value',
     'label',
+    'checked',
   ]);
   return (
     <label class={radio({ disabled: local.disabled })}>
@@ -57,6 +66,7 @@ const TuiRadio: Component<RadioButton> = (props) => {
       <input
         value={local.value}
         onChange={local.onChange}
+        checked={local.checked}
         class={input()}
         type='radio'
         name='group'

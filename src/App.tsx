@@ -181,6 +181,7 @@ function App() {
                   value='jerico1'
                 ></TuiRadio>
                 <TuiRadio
+                  checked
                   label='jerico2'
                   onChange={(e) => console.log(e.target.value)}
                   value='jerico2'

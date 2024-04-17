@@ -1,4 +1,4 @@
-input:checked ~ span:after {
+/* input:checked ~ span:after {
   content: '(•)';
 
   color: rgb(0, 255, 255) !important;
@@ -7,4 +7,4 @@ input:checked ~ span:after {
 input:not(checked) ~ span:after {
   padding: right 3px;
   content: '( )';
-}
+} */
