@@ -22,6 +22,13 @@ const overlap = cva({
     zIndex: 100,
     display: 'none',
   },
+  variants: {
+    active: {
+      true: {
+        display: 'block !important',
+      },
+    },
+  },
 });
 
 export type ModalVariant = RecipeVariantProps<typeof modal> & {
@@ -41,7 +48,7 @@ const TuiModal: Component<ModalVariant> = (props) => {
             justifyContent='center'
             alignContent='center'
           >
-            <div class={overlap()}></div>
+            <div class={overlap({ active: local.open })}></div>
             <div class={modal()}>
               <TuiWindow backgroundColor={local.backgroundColor}>
                 {props.children}
