@@ -6,6 +6,7 @@ const tdivider = cva({
   base: {
     borderBottom: '2px solid rgb(255, 255, 255)',
     display: 'block',
+    margin: '6px 0px',
   },
   variants: {
     black: {

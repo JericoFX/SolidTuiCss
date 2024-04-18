@@ -1,9 +1,9 @@
-import { cva } from '../../../styled-system/css';
-import { styled } from '../../../styled-system/jsx';
+import { RecipeVariantProps, cva } from '../../../styled-system/css';
+import { Component, JSX, splitProps } from 'solid-js';
 const window = cva({
   base: {
     backgroundColor: 'rgb(0, 0, 168)',
-    padding: 1,
+    padding: '1px',
     display: 'inline-block',
     position: 'relative',
     boxShadow: '10px 10px black',
@@ -56,9 +56,46 @@ const window = cva({
         backgroundRepeat: 'repeat',
       },
     },
+    sizes: {
+      small: {
+        maxW: '100px',
+        maxH: '50px',
+      },
+      medium: {
+        maxW: '200px',
+        maxH: '100px',
+      },
+      large: {
+        maxW: '100%',
+        maxH: '100%',
+      },
+    },
+  },
+  defaultVariants: {
+    backgroundColor: 'RedBlack',
+    sizes: 'large',
   },
 });
 
-export type WindowVariant = RecipeVariantProps<typeof window>;
+export type WindowVariant = RecipeVariantProps<typeof window> & {
+  children?: JSX.Element;
+} & JSX.IntrinsicElements['div'];
 
-export const TuiWindow = styled('div', window);
+const TuiWindow: Component<WindowVariant> = (props) => {
+  const [local, others] = splitProps(props, ['backgroundColor', 'sizes']);
+
+  return (
+    <div
+      class={window({
+        backgroundColor: local.backgroundColor,
+        sizes: local.sizes,
+      })}
+    >
+      {props.children}
+    </div>
+  );
+};
+
+export default TuiWindow;
+
+//export const TuiWindow = styled('div', window);

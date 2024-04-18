@@ -40,6 +40,7 @@ const tbutton = cva({
       Yellow168: { backgroundColor: 'rgb(168, 168, 0) !important' },
       White168: { backgroundColor: 'rgb(168, 168, 168) !important' },
       Orange168: { backgroundColor: 'rgb(168, 86, 0) !important' },
+      White255: { backgroundColor: 'rgb(255,255, 255) !important' },
     },
     textColor: {
       Black168Text: { color: 'rgb(0, 0, 0) !important' },

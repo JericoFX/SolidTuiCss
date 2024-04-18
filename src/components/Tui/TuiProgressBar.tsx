@@ -1,4 +1,4 @@
-import { Component, JSX } from 'solid-js';
+import { Component, JSX, splitProps } from 'solid-js';
 import { css, cva, type RecipeVariantProps } from '../../../styled-system/css';
 const progress = sva({
   className: 'tui-progress',
