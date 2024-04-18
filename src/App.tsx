@@ -1,19 +1,8 @@
 import { createEffect, createSignal } from 'solid-js';
-import { css, cva } from '../styled-system/css';
-import { HStack, VStack, styled } from '../styled-system/jsx';
+import { cva } from '../styled-system/css';
+import { VStack, styled } from '../styled-system/jsx';
 import { TuiScreenLarge } from './components/Tui/TuiScreen';
-import TuiFieldset from './components/Tui/TuiFieldset';
-import TuiInput from './components/Tui/TuiInput';
-import TuiWindow from './components/Tui/TuiWindow';
-import TuiRadio from './components/Tui/TuiRadio';
-import {
-  TuiModal,
-  TuiModalFooter,
-  TuiModalContent,
-} from './components/Tui/TuiModal';
-import TuiButton from './components/Tui/TuiButton';
-import TuiDivider from './components/Tui/TuiDivider';
-import { TuiContent, TuiHeader, TuiPanel } from './components/Tui/TuiPanel';
+import TuiProgressBar from './components/Tui/TuiProgressBar';
 
 const buttons = cva({
   className: 'tui-button',
@@ -163,8 +152,9 @@ const buttons = cva({
 });
 const Button = styled('button', buttons);
 function App() {
-  const [count, setCount] = createSignal(false);
+  const [count, setCount] = createSignal(0);
   createEffect(() => console.log(count()));
+
   return (
     <>
       <TuiScreenLarge bordered={true} backgroundColor='OrangeBlack' centered>
@@ -175,26 +165,11 @@ function App() {
           justifyContent='center'
           gap={2}
         >
-          <TuiFieldset>
-            <TuiInput hasLabel type='text' text='Name'></TuiInput>
-            <br></br>
-            <TuiInput hasLabel text='Grade'></TuiInput>
-            <br></br>
-            <TuiInput hasLabel text='IsBoss'></TuiInput>
-            <TuiButton
-              text='Open'
-              onClick={() => setCount(!count())}
-            ></TuiButton>
-            <TuiModal open={true}>
-              <TuiModalContent>
-                ¿Porque la gallina cruzo la calle?
-              </TuiModalContent>
-              <TuiModalFooter>
-                <TuiButton text='Close'></TuiButton>
-                <TuiButton text='Save'></TuiButton>
-              </TuiModalFooter>
-            </TuiModal>
-          </TuiFieldset>
+          <TuiProgressBar
+            foregroundColor='CyanWhite'
+            backgroundColor='RedBlack'
+            width={count()}
+          ></TuiProgressBar>
         </VStack>
       </TuiScreenLarge>
     </>
