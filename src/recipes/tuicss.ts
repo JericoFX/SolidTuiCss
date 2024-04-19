@@ -1,4 +1,9 @@
-import { defineRecipe, defineStyles, type Preset } from '@pandacss/dev';
+import {
+  defineRecipe,
+  defineStyles,
+  defineSlotRecipe,
+  type Preset,
+} from '@pandacss/dev';
 
 export const button = defineRecipe({
   className: 'tui-button',
@@ -139,6 +144,230 @@ export const windows = defineRecipe({
   },
   jsx: ['TuiWindow', 'Window'],
 });
+export const divider = defineRecipe({
+  className: 'tui-divider',
+  description: 'A line that divide something?',
+  base: {
+    borderBottom: '2px solid rgb(255, 255, 255)',
+    display: 'block',
+    margin: '6px 0px',
+  },
+  variants: {
+    black: {
+      true: {
+        borderBottom: '2px solid rgb(0, 0, 0)',
+        display: 'block',
+      },
+    },
+  },
+  jsx: ['TuiDivider', 'Divider'],
+});
+export const dropdown = defineSlotRecipe({
+  className: 'tui-dropdown',
+  description: 'A dropdown',
+  slots: ['dropdown', 'content'],
+  base: {
+    dropdown: {
+      position: 'relative',
+      display: 'inline-block',
+      cursor: 'pointer',
+      userSelect: 'none',
+      '&:hover > div:first-of-type': {
+        display: 'block',
+      },
+    },
+    content: {
+      display: 'none',
+      position: 'absolute',
+      backgroundColor: 'rgb(168, 168, 168)',
+      minWidth: '200px',
+      padding: '6px',
+      zIndex: 9,
+      '& ul': {
+        border: '2px black solid',
+      },
+      '& ul li': {
+        display: 'block !important',
+        margin: '6px',
+      },
+      '& ul li a:hover': {
+        backgroundColor: 'rgb(0, 168, 0)',
+      },
+    },
+  },
+});
+export const fieldset = defineSlotRecipe({
+  className: 'tui-fieldset',
+  description: 'A Fieldset',
+  slots: ['fieldset', 'legend'],
+  base: {
+    fieldset: {
+      border: '6px white double',
+      padding: '12px',
+      backgroundColor: 'inherit',
+      marginBottom: '6px',
+    },
+    legend: {
+      color: 'rgb(255, 255, 0)',
+      textAlign: 'center',
+      fontSize: '2rem',
+      fontWeight: 'bold',
+    },
+  },
+  variants: {
+    fieldset: {
+      noLegend: {
+        true: {
+          marginTop: 0,
+        },
+      },
+      dotted: {
+        true: {
+          borderStyle: 'dotted !important',
+          borderWidth: '2px !important',
+        },
+      },
+      solid: {
+        true: {
+          borderStyle: 'solid !important',
+          borderWidth: '2px !important',
+        },
+      },
+      doble: {
+        true: {
+          borderStyle: 'double !important',
+          borderWidth: '6px !important',
+        },
+      },
+      dashed: {
+        true: {
+          borderStyle: 'dashed !important',
+          borderWidth: '2px !important',
+        },
+      },
+      backgroundColor: {
+        GreenWhite: {
+          backgroundImage: '{assets.greenWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        GreenBlack: {
+          backgroundImage: '{assets.greenBlack}',
+          backgroundRepeat: 'repeat',
+        },
+        CyanWhite: {
+          backgroundImage: '{assets.cyanWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        CyanBlack: {
+          backgroundImage: '{assets.cyanBlack}',
+          backgroundRepeat: 'repeat',
+        },
+        RedWhite: {
+          backgroundImage: '{assets.redWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        RedBlack: {
+          backgroundImage: '{assets.redWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        PurpleWhite: {
+          backgroundImage: '{assets.purpleWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        PurpleBlack: {
+          backgroundImage: '{assets.purpleBlack}',
+          backgroundRepeat: 'repeat',
+        },
+        YellowWhite: {
+          backgroundImage: '{assets.yellowWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        OrangeWhite: {
+          backgroundImage: '{assets.orangeWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        OrangeBlack: {
+          backgroundImage: '{assets.orangeBlack}',
+          backgroundRepeat: 'repeat',
+        },
+      },
+      textLeft: {
+        true: {
+          textAlign: 'left',
+        },
+      },
+      textRight: {
+        true: {
+          textAlign: 'right',
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    backgroundColor: 'RedBlack',
+    noLegend: true,
+  },
+  jsx: ['TuiFieldset', 'fieldset', 'legend'],
+});
+export const input = defineSlotRecipe({
+  className: 'tui-input',
+  description: 'Input',
+  slot: ['input', 'label'],
+  base: {
+    input: {
+      backgroundColor: 'rgb(0, 0, 0)',
+      color: 'white',
+      outline: 0,
+      border: 'none',
+      borderRadius: 0,
+      _focus: {
+        backgroundColor: 'rgb(255, 255, 0) !important',
+        color: 'black !important',
+      },
+    },
+    label: {
+      color: 'white',
+      w: '100px',
+      display: 'inline-block',
+      marginRight: '10px',
+    },
+  },
+  variants: {
+    disabled: {
+      input: {
+        true: {
+          backgroundColor: 'rgb(168, 168, 168)',
+          color: 'black',
+        },
+      },
+      label: {
+        disabled: {
+          true: {
+            color: 'black',
+          },
+        },
+        size: {
+          sm: {
+            w: '70px',
+            marginRight: '5px',
+          },
+        },
+        textColor: {
+          Black255: { color: '{colors.tui.black255}' },
+          Blue255: { color: '{colors.tui.blue255}' },
+          Green255: { color: '{colors.tui.green255}' },
+          Cyan255: { color: '{colors.tui.cyan255}' },
+          Red255: { color: '{colors.tui.red255}' },
+          Purple255: { color: '{colors.tui.purple255}' },
+          Yellow255: { color: '{colors.tui.yellow255}' },
+          White255: { color: '{colors.tui.white255}' },
+          Orange255: { color: '{colors.tui.orange255}' },
+        },
+      },
+    },
+  },
+  jsx: ['TuiInput', 'input', 'label'],
+});
 
 export const tuicss: Preset = {
   theme: {
@@ -166,7 +395,6 @@ export const tuicss: Preset = {
             orange255: { value: '#FFA800 !important' },
           },
         },
-
         fonts: {
           DOS: { value: 'DOS, sans-serif' },
         },
@@ -204,6 +432,12 @@ export const tuicss: Preset = {
       recipes: {
         button,
         windows,
+        divider,
+      },
+      slotRecipes: {
+        dropdown,
+        fieldset,
+        input,
       },
     },
   },
