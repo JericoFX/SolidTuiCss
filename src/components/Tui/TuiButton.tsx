@@ -1,90 +1,27 @@
-import { cva } from '../../../styled-system/css/cva';
-import { RecipeVariantProps } from '../../../styled-system/types';
-
 import { Component, JSX, splitProps } from 'solid-js';
-const tbutton = cva({
-  base: {
-    display: 'inline-block',
-    outline: '0',
-    padding: '1px 10px',
-    backgroundColor: 'rgb(0, 168, 0)',
-    color: 'black',
-    border: 'none',
-    cursor: 'pointer',
-    textAlign: 'center',
-    boxShadow: '10px 10px black',
-    borderRadius: '0px',
-    userSelect: 'none',
-    _active: {
-      backgroundColor: 'rgb(0, 168, 168) !important',
-      color: 'black !important',
-      boxShadow: 'none !important',
-    },
-    _focus: {
-      color: 'rgb(0, 255, 255) !important',
-    },
-  },
-  variants: {
-    disabled: {
-      true: {
-        textDecoration: 'line-through',
-      },
-    },
-    color: {
-      Black168: { backgroundColor: 'rgb(0, 0, 0) !important' },
-      Blue168: { backgroundColor: 'rgb(0, 0, 168) !important' },
-      Green168: { backgroundColor: 'rgb(0, 168, 0) !important' },
-      Cyan168: { backgroundColor: 'rgb(0, 168, 168) !important' },
-      Red168: { backgroundColor: 'rgb(168, 0, 0) !important' },
-      Purple168: { backgroundColor: 'rgb(168, 0, 168) !important' },
-      Yellow168: { backgroundColor: 'rgb(168, 168, 0) !important' },
-      White168: { backgroundColor: 'rgb(168, 168, 168) !important' },
-      Orange168: { backgroundColor: 'rgb(168, 86, 0) !important' },
-      White255: { backgroundColor: 'rgb(255,255, 255) !important' },
-    },
-    textColor: {
-      Black168Text: { color: 'rgb(0, 0, 0) !important' },
-      Blue168Text: { color: 'rgb(0, 0, 168) !important' },
-      Green168Text: { color: 'rgb(0, 168, 0) !important' },
-      Cyan168Text: { color: 'rgb(0, 168, 168) !important' },
-      Red168Text: { color: 'rgb(168, 0, 0) !important' },
-      Purple168Text: { color: 'rgb(168, 0, 168) !important' },
-      Yellow168Text: { color: 'rgb(168, 168, 0) !important' },
-      White168Text: { color: 'rgb(168, 168, 168) !important' },
-      Orange168Text: { color: 'rgb(168, 86, 0) !important' },
-    },
-  },
-  defaultVariants: {
-    color: 'Green168',
-    textColor: 'Black168Text',
-  },
-});
+import {
+  button,
+  type ButtonVariantProps,
+} from '../../../styled-system/recipes';
 
-export type ButtonVariants = RecipeVariantProps<typeof tbutton> & {
-  text?: string;
-  children?: JSX.Element;
-  disabled?: boolean;
-  onClick?: () => void;
-} & JSX.IntrinsicElements['button'];
-
-const TuiButton: Component<ButtonVariants> = (props) => {
-  const [local, other] = splitProps(props, [
-    'text',
-    'disabled',
-    'onClick',
+type ButtonProps = ButtonVariantProps & JSX.HTMLAttributes<HTMLButtonElement>;
+const TuiButton: Component<ButtonProps> = (props) => {
+  const [local, _] = splitProps(props, [
     'color',
     'textColor',
+    'disabled',
+    'onClick',
   ]);
   return (
     <button
       onClick={local.onClick}
-      class={tbutton({
-        disabled: local.disabled,
+      class={button({
         color: local.color,
         textColor: local.textColor,
+        disabled: local.disabled,
       })}
     >
-      {local.text}
+      {props.children}
     </button>
   );
 };
