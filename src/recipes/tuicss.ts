@@ -60,6 +60,85 @@ export const button = defineRecipe({
 
   jsx: ['TuiButton', 'Button', 'button'],
 });
+export const windows = defineRecipe({
+  className: 'tui-windows',
+  description: 'Windows',
+  base: {
+    backgroundColor: '{colors.tui.blue168}',
+    padding: '1px',
+    display: 'inline-block',
+    position: 'relative',
+    boxShadow: '10px 10px black',
+    color: '{colors.tui.white255}',
+  },
+  variants: {
+    backgroundColor: {
+      GreenWhite: {
+        backgroundImage: '{assets.greenWhite}',
+        backgroundRepeat: 'repeat',
+      },
+      GreenBlack: {
+        backgroundImage: '{assets.greenBlack}',
+        backgroundRepeat: 'repeat',
+      },
+      CyanWhite: {
+        backgroundImage: '{assets.cyanWhite}',
+        backgroundRepeat: 'repeat',
+      },
+      CyanBlack: {
+        backgroundImage: '{assets.cyanBlack}',
+        backgroundRepeat: 'repeat',
+      },
+      RedWhite: {
+        backgroundImage: '{assets.redWhite}',
+        backgroundRepeat: 'repeat',
+      },
+      RedBlack: {
+        backgroundImage: '{assets.redWhite}',
+        backgroundRepeat: 'repeat',
+      },
+      PurpleWhite: {
+        backgroundImage: '{assets.purpleWhite}',
+        backgroundRepeat: 'repeat',
+      },
+      PurpleBlack: {
+        backgroundImage: '{assets.purpleBlack}',
+        backgroundRepeat: 'repeat',
+      },
+      YellowWhite: {
+        backgroundImage: '{assets.yellowWhite}',
+        backgroundRepeat: 'repeat',
+      },
+      OrangeWhite: {
+        backgroundImage: '{assets.orangeWhite}',
+        backgroundRepeat: 'repeat',
+      },
+      OrangeBlack: {
+        backgroundImage: '{assets.orangeBlack}',
+        backgroundRepeat: 'repeat',
+      },
+    },
+    sizes: {
+      small: {
+        maxW: '20vw',
+        maxH: '10vh',
+      },
+      medium: {
+        maxW: '30vw',
+        maxH: '15vh',
+      },
+      large: {
+        maxW: '50vw',
+        maxH: '25vh',
+      },
+    },
+  },
+  defaultVariants: {
+    backgroundColor: 'RedBlack',
+    sizes: 'large',
+  },
+  jsx: ['TuiWindow', 'Window'],
+});
 
 export const tuicss: Preset = {
   theme: {
@@ -85,18 +164,46 @@ export const tuicss: Preset = {
             purple255: { value: '#FF00FF !important' },
             yellow255: { value: '#FFFF00 !important' },
             orange255: { value: '#FFA800 !important' },
-            base: {
-              value: '{colors.tui.white168}',
-            },
-            background: { value: '{colors.tui.black168}' },
           },
         },
+
         fonts: {
           DOS: { value: 'DOS, sans-serif' },
         },
+        assets: {
+          greenWhite: {
+            value: { type: 'url', value: '/images/bg-green-white.png' },
+          },
+          greenBlack: {
+            value: { type: 'url', value: '/images/bg-green-black.png' },
+          },
+          cyanWhite: {
+            value: { type: 'url', value: '/images/bg-cyan-white.png' },
+          },
+          cyanBlack: {
+            value: { type: 'url', value: '/images/bg-cyan-black.png' },
+          },
+          purpleWhite: {
+            value: { type: 'url', value: '/images/bg-purple-white.png' },
+          },
+          purpleBlack: {
+            value: { type: 'url', value: '/images/bg-purple-black.png' },
+          },
+          yellowWhite: {
+            value: { type: 'url', value: '/images/bg-yellow-black.png' },
+          },
+          orangeWhite: {
+            value: { type: 'url', value: '/images/bg-orange-white.png' },
+          },
+          orangeBlack: {
+            value: { type: 'url', value: '/images/bg-orange-black.png' },
+          },
+        },
       },
+
       recipes: {
         button,
+        windows,
       },
     },
   },
