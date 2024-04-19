@@ -58,6 +58,7 @@ const progressBase = cva({
     },
   },
 });
+
 const label = cva({
   base: {
     position: 'absolute',

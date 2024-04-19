@@ -21,12 +21,12 @@ export const button = defineRecipe({
     borderRadius: '0px',
     userSelect: 'none',
     _active: {
-      backgroundColor: 'rgb(0, 168, 168) !important',
+      backgroundColor: '{colors.tui.cyan168} !important',
       color: 'black !important',
       boxShadow: 'none !important',
     },
     _focus: {
-      color: 'rgb(0, 255, 255) !important',
+      color: '{colors.tui.cyan255} !important',
     },
   },
   variants: {
@@ -369,6 +369,569 @@ export const input = defineSlotRecipe({
   jsx: ['TuiInput', 'input', 'label'],
 });
 
+const modal = defineSlotRecipe({
+  className: 'tui-modal',
+  definition: 'A modal with old style',
+  slots: ['modal', 'overlap'],
+  base: {
+    modal: {
+      position: 'absolute',
+      maxW: '100%',
+      maxH: '100%',
+      zIndex: '101',
+    },
+    overlap: {
+      position: 'absolute',
+      top: '0px',
+      left: '0px',
+      right: '0px',
+      bottom: '0px',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      zIndex: 100,
+      display: 'none',
+    },
+  },
+  variants: {
+    overlap: {
+      active: {
+        true: {
+          display: 'block !important',
+        },
+      },
+    },
+  },
+});
+
+const nav = defineRecipe({
+  className: 'tui-navbar',
+  description: 'Navbar',
+  base: {
+    width: '100%',
+    backgroundColor: '{color.tui.white168}',
+    padding: '0px 2px',
+    zIndex: 9,
+    display: 'block',
+    position: 'fixed',
+    '& ul li': {
+      display: 'inline-block',
+      marginLeft: '10px',
+      padding: '1px 3px',
+    },
+    '& ul li a': {
+      display: 'block',
+      userSelect: 'none',
+    },
+    '& ul li:hover': { backgroundColor: '{color.tui.green168}' },
+  },
+  jsx: ['TuiNavbar', 'navbar'],
+});
+
+const panel = defineSlotRecipe({
+  className: 'tui-panel',
+  description: 'A nice panel',
+  slots: ['panel', 'header', 'content'],
+  base: {
+    panel: {
+      backgroundColor: '{colors.tui.blue168}',
+      display: 'inline-block',
+      color: 'white',
+      boxShadow: '10px 10px black',
+    },
+    header: {
+      paddingTop: '2px',
+      display: 'block',
+      background: 'white',
+      textAlign: 'center',
+      color: 'black',
+    },
+    content: {
+      padding: '12px',
+      backgroundColor: 'inherit',
+      color: '{colors.tui.white168}',
+    },
+  },
+  variants: {
+    panel: {
+      backgroundColor: {
+        Black168: { backgroundColor: '{colors.tui.black168}' },
+        Blue168: { backgroundColor: '{colors.tui.blue168}' },
+        Green168: { backgroundColor: '{colors.tui.green168}' },
+        Cyan168: { backgroundColor: '{colors.tui.cyan168}' },
+        Red168: { backgroundColor: '{colors.tui.red168}' },
+        Purple168: { backgroundColor: '{colors.tui.purple168}' },
+        Yellow168: { backgroundColor: '{colors.tui.yellow168}' },
+        White168: { backgroundColor: '{colors.tui.white168}' },
+        Orange168: { backgroundColor: '{colors.tui.orange168}' },
+      },
+    },
+  },
+});
+
+const progressbar = defineSlotRecipe({
+  className: 'tui-progress',
+  description: 'A nice progressbar',
+  slots: ['bases', 'label', 'progress'],
+  base: {
+    bases: {
+      display: 'block',
+      position: 'relative',
+      height: '20px',
+      width: '200px',
+      backgroundColor: '{colors.tui.cyan168}',
+      overflow: 'hidden',
+    },
+    label: {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translateX(-50%) translateY(-50%)',
+      zIndex: 1,
+    },
+    progress: {
+      position: 'absolute',
+      left: '0px',
+      backgroundColor: '{colors.tui.cyan255}',
+      height: '100%',
+      display: 'inline-block',
+    },
+  },
+  variants: {
+    bases: {
+      backgroundColor: {
+        GreenWhite: {
+          backgroundImage: '{assets.greenWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        GreenBlack: {
+          backgroundImage: '{assets.greenBlack}',
+          backgroundRepeat: 'repeat',
+        },
+        CyanWhite: {
+          backgroundImage: '{assets.cyanWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        CyanBlack: {
+          backgroundImage: '{assets.cyanBlack}',
+          backgroundRepeat: 'repeat',
+        },
+        RedWhite: {
+          backgroundImage: '{assets.redWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        RedBlack: {
+          backgroundImage: '{assets.redWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        PurpleWhite: {
+          backgroundImage: '{assets.purpleWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        PurpleBlack: {
+          backgroundImage: '{assets.purpleBlack}',
+          backgroundRepeat: 'repeat',
+        },
+        YellowWhite: {
+          backgroundImage: '{assets.yellowWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        OrangeWhite: {
+          backgroundImage: '{assets.orangeWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        OrangeBlack: {
+          backgroundImage: '{assets.orangeBlack}',
+          backgroundRepeat: 'repeat',
+        },
+      },
+    },
+    progress: {
+      foregroundColor: {
+        GreenWhite: {
+          backgroundImage: '{assets.greenWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        GreenBlack: {
+          backgroundImage: '{assets.greenBlack}',
+          backgroundRepeat: 'repeat',
+        },
+        CyanWhite: {
+          backgroundImage: '{assets.cyanWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        CyanBlack: {
+          backgroundImage: '{assets.cyanBlack}',
+          backgroundRepeat: 'repeat',
+        },
+        RedWhite: {
+          backgroundImage: '{assets.redWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        RedBlack: {
+          backgroundImage: '{assets.redWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        PurpleWhite: {
+          backgroundImage: '{assets.purpleWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        PurpleBlack: {
+          backgroundImage: '{assets.purpleBlack}',
+          backgroundRepeat: 'repeat',
+        },
+        YellowWhite: {
+          backgroundImage: '{assets.yellowWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        OrangeWhite: {
+          backgroundImage: '{assets.orangeWhite}',
+          backgroundRepeat: 'repeat',
+        },
+        OrangeBlack: {
+          backgroundImage: '{assets.orangeBlack}',
+          backgroundRepeat: 'repeat',
+        },
+      },
+      intermediate: {
+        true: {
+          position: 'absolute',
+          left: 0,
+          backgroundColor: '{colors.tui.cyan255}',
+          height: 20,
+          width: 20,
+          display: 'inline-block',
+          animation: 'indeterminate 1s backwards',
+          animationIterationCount: 'infinite',
+          animationTimingFunction: 'linear',
+        },
+      },
+    },
+  },
+  jsx: ['TuiProgress', 'progress'],
+});
+
+const screen = defineRecipe({
+  className: 'tui-screen',
+  description: 'Screen',
+  base: {
+    width: '640px',
+    height: '480px',
+    position: 'relative',
+    overflow: 'hidden',
+  },
+  variants: {
+    bordered: {
+      true: {
+        border: '2px solid black',
+      },
+    },
+    centered: {
+      true: {
+        margin: 'auto',
+        marginTop: '20px',
+      },
+    },
+    backgroundColor: {
+      GreenWhite: {
+        backgroundImage: '{assets.greenWhite}',
+        backgroundRepeat: 'repeat',
+      },
+      GreenBlack: {
+        backgroundImage: '{assets.greenBlack}',
+        backgroundRepeat: 'repeat',
+      },
+      CyanWhite: {
+        backgroundImage: '{assets.cyanWhite}',
+        backgroundRepeat: 'repeat',
+      },
+      CyanBlack: {
+        backgroundImage: '{assets.cyanBlack}',
+        backgroundRepeat: 'repeat',
+      },
+      RedWhite: {
+        backgroundImage: '{assets.redWhite}',
+        backgroundRepeat: 'repeat',
+      },
+      RedBlack: {
+        backgroundImage: '{assets.redWhite}',
+        backgroundRepeat: 'repeat',
+      },
+      PurpleWhite: {
+        backgroundImage: '{assets.purpleWhite}',
+        backgroundRepeat: 'repeat',
+      },
+      PurpleBlack: {
+        backgroundImage: '{assets.purpleBlack}',
+        backgroundRepeat: 'repeat',
+      },
+      YellowWhite: {
+        backgroundImage: '{assets.yellowWhite}',
+        backgroundRepeat: 'repeat',
+      },
+      OrangeWhite: {
+        backgroundImage: '{assets.orangeWhite}',
+        backgroundRepeat: 'repeat',
+      },
+      OrangeBlack: {
+        backgroundImage: '{assets.orangeBlack}',
+        backgroundRepeat: 'repeat',
+      },
+    },
+    size: {
+      sm: {
+        width: '640px',
+        height: '480px',
+        position: 'relative',
+        overflow: 'hidden',
+      },
+      md: {
+        width: '800px',
+        height: '600px',
+        position: 'relative',
+        overflow: 'hidden',
+      },
+      lg: {
+        width: '1024px',
+        height: '768px',
+        position: 'relative',
+        overflow: 'hidden',
+      },
+    },
+  },
+  defaultVariants: {
+    size: 'sm',
+    centered: true,
+    backgroundColor: 'RedBlack',
+  },
+  jsx: ['TuiScreen'],
+});
+
+const radio = defineSlotRecipe({
+  className: 'tui-radio',
+  description: 'Radio Buttons',
+  slots: ['radio', 'input', 'span'],
+  base: {
+    radio: {
+      display: 'block',
+      position: 'relative',
+      cursor: 'pointer',
+      color: 'white',
+      paddingLeft: '35px',
+      userSelect: 'none',
+    },
+    input: {
+      position: 'absolute',
+      opacity: 0,
+      cursor: 'pointer',
+      top: 0,
+      left: 0,
+      pointerEvents: 'none',
+      '&:checked ~ span::after': {
+        content: '"(•)"',
+        color: '{colors.tui.cyan255}',
+      },
+      '&:not(checked) ~ span:after': {
+        padding: 'right 3px',
+        content: '"( )"',
+      },
+    },
+    span: {
+      position: 'absolute',
+      width: '10px',
+      height: '10px',
+      cursor: 'pointer',
+      top: 0,
+      left: 0,
+    },
+  },
+  variants: {
+    radio: {
+      disabled: {
+        true: {
+          color: '{colors.tui.white255}',
+        },
+      },
+    },
+  },
+  jsx: ['TuiRadio'],
+});
+
+const shadow = defineRecipe({
+  className: 'tui-shadow',
+  description: 'SHADOW',
+  base: {
+    boxShadow: '{shadows.none}',
+  },
+  variants: {
+    Shadow1: {
+      boxShadow: '{shadows.Shadow1}',
+      Shadow2: { boxShadow: '{shadows.Shadow2}' },
+      Shadow3: { boxShadow: '{shadows.Shadow3}' },
+      Shadow4: { boxShadow: '{shadows.Shadow4}' },
+      Shadow5: { boxShadow: '{shadows.Shadow5}' },
+      Shadow1left: { boxShadow: '{shadows.Shadow1left}' },
+      Shadowleft2: { boxShadow: '{shadows.Shadowleft2}' },
+      Shadowleft3: { boxShadow: '{shadows.Shadowleft3}' },
+      Shadowleft4: { boxShadow: '{shadows.Shadowleft4}' },
+      Shadowleft5: { boxShadow: '{shadows.Shadowleft5}' },
+    },
+  },
+  jsx: ['TuiShadow'],
+});
+
+const table = defineSlotRecipe({
+  className: 'tui-table',
+  description: 'Tui Table',
+  slots: ['table', 'body', 'thead', 'foot'],
+  base: {
+    table: {
+      border: '2px solid rgb(168, 168, 168)',
+      padding: '5px',
+      borderCollapse: 'collapse',
+      '& tr td': {
+        padding: '0px 2px',
+      },
+    },
+    body: {
+      backgroundColor: 'inherit',
+      color: 'white',
+      '& tr td': {
+        borderRight: '2px solid rgb(168, 168, 168)',
+        padding: '0px 2px',
+      },
+    },
+    thead: {
+      borderRight: '2px solid rgb(168, 168, 168)',
+      padding: '0px 2px',
+      backgroundColor: 'inherit',
+      color: '{colors.tui.yellow255}',
+      textAlign: 'center',
+    },
+    foot: {
+      backgroundColor: 'inherit',
+      color: '{colors.tui.yellow255}',
+      textAlign: 'center',
+    },
+  },
+  variants: {
+    table: {
+      borderRight: {
+        '& tr td': {
+          borderRight: '2px solid {colors.tui.white168}',
+        },
+      },
+      borderBottom: {
+        '& tr td': {
+          borderBottom: '2px solid {colors.tui.white168}',
+        },
+      },
+    },
+    body: {
+      hover: {
+        cyan: {
+          '& tr:hover': {
+            backgroundColor: '{colors.tui.cyan255}',
+            color: 'black',
+          },
+        },
+        green: {
+          '& tr:hover': {
+            backgroundColor: '{colors.tui.green255}',
+            color: 'black',
+          },
+        },
+        blue: {
+          '& tr:hover': {
+            backgroundColor: '{colors.tui.blue255}',
+            color: 'white',
+          },
+        },
+        red: {
+          '& tr:hover': {
+            backgroundColor: '{colors.tui.red255}',
+            color: 'black',
+          },
+        },
+        purple: {
+          '& tr:hover': {
+            backgroundColor: '{colors.tui.purple255}',
+            color: 'black',
+          },
+        },
+        white: {
+          '& tr:hover': {
+            backgroundColor: '{colors.tui.white255}',
+            color: 'black',
+          },
+        },
+        orange: {
+          '& tr:hover': {
+            backgroundColor: '{colors.tui.yellow168}',
+            color: 'black',
+          },
+        },
+      },
+      stripped: {
+        blue: {
+          '& tr:nth-child(even)': {
+            backgroundColor: '{colors.tui.cyan168}',
+          },
+        },
+        green: {
+          '& tr:nth-child(even)': {
+            backgroundColor: '{colors.tui.blue168}',
+          },
+        },
+        cyan: {
+          '& tr:nth-child(even)': {
+            backgroundColor: '{colors.tui.cyan168}',
+          },
+        },
+        red: {
+          '& tr:nth-child(even)': {
+            backgroundColor: '{colors.tui.red168}',
+          },
+        },
+        purple: {
+          '& tr:nth-child(even)': {
+            backgroundColor: '{colors.tui.purple168}',
+          },
+        },
+        yellow: {
+          '& tr:nth-child(even)': {
+            backgroundColor: '{colors.tui.yellow168}',
+          },
+        },
+        white: {
+          '& tr:nth-child(even)': {
+            backgroundColor: '{colors.tui.white168}',
+            color: 'black',
+          },
+        },
+      },
+    },
+  },
+});
+
+const textArea = defineRecipe({
+  className: 'tui-textarea',
+  description: 'Text Area',
+  base: {
+    backgroundColor: 'inherit',
+    border: 'none',
+    padding: '0px',
+    color: '{colors.tui.yellow255}',
+    outline: 'none',
+  },
+  variants: {
+    disabled: {
+      true: {
+        backgroundColor: '{colors.tui.white168}',
+        color: 'black',
+      },
+    },
+  },
+});
+
 export const tuicss: Preset = {
   theme: {
     extend: {
@@ -427,17 +990,38 @@ export const tuicss: Preset = {
             value: { type: 'url', value: '/images/bg-orange-black.png' },
           },
         },
+        shadows: {
+          none: { value: 'none !important' },
+          Shadow1: { value: '10px 10px black !important' },
+          Shadow2: { value: '15px 15px black' },
+          Shadow3: { value: '20px 20px black' },
+          Shadow4: { value: '25px 25px black' },
+          Shadow5: { value: '30px 30px black' },
+          Shadow1left: { value: '-10px 10px black !important' },
+          Shadowleft2: { value: '-15px 15px black !important' },
+          Shadowleft3: { value: '-20px 20px black !important' },
+          Shadowleft4: { value: '-25px 25px black !important' },
+          Shadowleft5: { value: '-30px 30px black !important' },
+        },
       },
-
       recipes: {
         button,
         windows,
         divider,
+        nav,
+        screen,
+        shadow,
+        textArea,
       },
       slotRecipes: {
         dropdown,
         fieldset,
         input,
+        modal,
+        panel,
+        progressbar,
+        radio,
+        table,
       },
     },
   },
