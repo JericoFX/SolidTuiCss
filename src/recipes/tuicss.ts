@@ -1,9 +1,4 @@
-import {
-  defineRecipe,
-  defineStyles,
-  defineSlotRecipe,
-  type Preset,
-} from '@pandacss/dev';
+import { defineRecipe, defineSlotRecipe, type Preset } from '@pandacss/dev';
 
 export const button = defineRecipe({
   className: 'tui-button',
@@ -12,7 +7,7 @@ export const button = defineRecipe({
     display: 'inline-block',
     outline: '0',
     padding: '1px 10px',
-    backgroundColor: '{colors.tui.green}',
+    backgroundColor: '{colors.tui.green255}',
     color: '#000000',
     border: 'none',
     cursor: 'pointer',
@@ -99,7 +94,7 @@ export const windows = defineRecipe({
         backgroundRepeat: 'repeat',
       },
       RedBlack: {
-        backgroundImage: '{assets.redWhite}',
+        backgroundImage: '{assets.redBlack}',
         backgroundRepeat: 'repeat',
       },
       PurpleWhite: {
@@ -216,104 +211,124 @@ export const fieldset = defineSlotRecipe({
   },
   variants: {
     noLegend: {
-      fieldset: {
-        true: {
-          marginTop: 0,
+      true: {
+        fieldset: {
+          marginTop: '0',
         },
       },
-      dotted: {
+    },
+    dotted: {
+      true: {
         fieldset: {
-          true: {
-            borderStyle: 'dotted !important',
-            borderWidth: '2px !important',
-          },
+          borderStyle: 'dotted !important',
+          borderWidth: '2px !important',
         },
       },
-      solid: {
+    },
+    solid: {
+      true: {
         fieldset: {
-          true: {
-            borderStyle: 'solid !important',
-            borderWidth: '2px !important',
-          },
+          borderStyle: 'solid !important',
+          borderWidth: '2px !important',
         },
       },
-      doble: {
+    },
+    doble: {
+      true: {
         fieldset: {
-          true: {
-            borderStyle: 'double !important',
-            borderWidth: '6px !important',
-          },
+          borderStyle: 'double !important',
+          borderWidth: '6px !important',
         },
       },
-      dashed: {
+    },
+    dashed: {
+      true: {
         fieldset: {
-          true: {
-            borderStyle: 'dashed !important',
-            borderWidth: '2px !important',
-          },
-        }
+          borderStyle: 'dashed !important',
+          borderWidth: '2px !important',
+        },
       },
-      backgroundColor: {
+    },
+    backgroundColor: {
+      GreenWhite: {
         fieldset: {
-          GreenWhite: {
-            backgroundImage: '{assets.greenWhite}',
-            backgroundRepeat: 'repeat',
-          },
-          GreenBlack: {
-            backgroundImage: '{assets.greenBlack}',
-            backgroundRepeat: 'repeat',
-          },
-          CyanWhite: {
-            backgroundImage: '{assets.cyanWhite}',
-            backgroundRepeat: 'repeat',
-          },
-          CyanBlack: {
-            backgroundImage: '{assets.cyanBlack}',
-            backgroundRepeat: 'repeat',
-          },
-          RedWhite: {
-            backgroundImage: '{assets.redWhite}',
-            backgroundRepeat: 'repeat',
-          },
-          RedBlack: {
-            backgroundImage: '{assets.redWhite}',
-            backgroundRepeat: 'repeat',
-          },
-          PurpleWhite: {
-            backgroundImage: '{assets.purpleWhite}',
-            backgroundRepeat: 'repeat',
-          },
-          PurpleBlack: {
-            backgroundImage: '{assets.purpleBlack}',
-            backgroundRepeat: 'repeat',
-          },
-          YellowWhite: {
-            backgroundImage: '{assets.yellowWhite}',
-            backgroundRepeat: 'repeat',
-          },
-          OrangeWhite: {
-            backgroundImage: '{assets.orangeWhite}',
-            backgroundRepeat: 'repeat',
-          },
-          OrangeBlack: {
-            backgroundImage: '{assets.orangeBlack}',
-            backgroundRepeat: 'repeat',
-          },
-        }
+          backgroundImage: '{assets.greenWhite}',
+          backgroundRepeat: 'repeat',
+        },
       },
-      textLeft: {
+      GreenBlack: {
         fieldset: {
-          true: {
-            textAlign: 'left',
-          },
-        }
+          backgroundImage: '{assets.greenBlack}',
+          backgroundRepeat: 'repeat',
+        },
       },
-      textRight: {
+      CyanWhite: {
         fieldset: {
-          true: {
-            textAlign: 'right',
-          },
-        }
+          backgroundImage: '{assets.cyanWhite}',
+          backgroundRepeat: 'repeat',
+        },
+      },
+      CyanBlack: {
+        fieldset: {
+          backgroundImage: '{assets.cyanBlack}',
+          backgroundRepeat: 'repeat',
+        },
+      },
+      RedWhite: {
+        fieldset: {
+          backgroundImage: '{assets.redWhite}',
+          backgroundRepeat: 'repeat',
+        },
+      },
+      RedBlack: {
+        fieldset: {
+          backgroundImage: '{assets.redWhite}',
+          backgroundRepeat: 'repeat',
+        },
+      },
+      PurpleWhite: {
+        fieldset: {
+          backgroundImage: '{assets.purpleWhite}',
+          backgroundRepeat: 'repeat',
+        },
+      },
+      PurpleBlack: {
+        fieldset: {
+          backgroundImage: '{assets.purpleBlack}',
+          backgroundRepeat: 'repeat',
+        },
+      },
+      YellowWhite: {
+        fieldset: {
+          backgroundImage: '{assets.yellowWhite}',
+          backgroundRepeat: 'repeat',
+        },
+      },
+      OrangeWhite: {
+        fieldset: {
+          backgroundImage: '{assets.orangeWhite}',
+          backgroundRepeat: 'repeat',
+        },
+      },
+      OrangeBlack: {
+        fieldset: {
+          backgroundImage: '{assets.orangeBlack}',
+          backgroundRepeat: 'repeat',
+        },
+      },
+    },
+    textLeft: {
+      true: {
+        fieldset: {
+          textAlign: 'left',
+        },
+      },
+    },
+    textRight: {
+      true: {
+        fieldset: {
+          textAlign: 'right',
+        },
       },
     },
   },
@@ -326,7 +341,7 @@ export const fieldset = defineSlotRecipe({
 export const input = defineSlotRecipe({
   className: 'tui-input',
   description: 'Input',
-  slot: ['input', 'label'],
+  slots: ['input', 'label'],
   base: {
     input: {
       backgroundColor: 'rgb(0, 0, 0)',
@@ -348,48 +363,48 @@ export const input = defineSlotRecipe({
   },
   variants: {
     disabled: {
-      input: {
-        true: {
+      true: {
+        input: {
           backgroundColor: 'rgb(168, 168, 168)',
           color: 'black',
+          userSelect: 'none',
+          cursor: 'not-allowed',
         },
-      },
-    },
-    disabled: {
-      label: {
-        true: {
+        label: {
           color: 'black',
         },
       },
-      size: {
+    },
+
+    size: {
+      sm: {
         label: {
-          sm: {
-            w: '70px',
-            marginRight: '5px',
-          },
-        },
-      },
-      textColor: {
-        label: {
-          Black255: { color: '{colors.tui.black255}' },
-          Blue255: { color: '{colors.tui.blue255}' },
-          Green255: { color: '{colors.tui.green255}' },
-          Cyan255: { color: '{colors.tui.cyan255}' },
-          Red255: { color: '{colors.tui.red255}' },
-          Purple255: { color: '{colors.tui.purple255}' },
-          Yellow255: { color: '{colors.tui.yellow255}' },
-          White255: { color: '{colors.tui.white255}' },
-          Orange255: { color: '{colors.tui.orange255}' },
+          w: '70px',
+          marginRight: '5px',
         },
       },
     },
+    textColor: {
+      Black255: { label: { color: '{colors.tui.black255}' } },
+      Blue255: { label: { color: '{colors.tui.blue255}' } },
+      Green255: { label: { color: '{colors.tui.green255}' } },
+      Cyan255: { label: { color: '{colors.tui.cyan255}' } },
+      Red255: { label: { color: '{colors.tui.red255}' } },
+      Purple255: { label: { color: '{colors.tui.purple255}' } },
+      Yellow255: { label: { color: '{colors.tui.yellow255}' } },
+      White255: { label: { color: '{colors.tui.white255}' } },
+      Orange255: { label: { color: '{colors.tui.orange255}' } },
+    },
+  },
+  defaultVariants: {
+    textColor: 'White255',
   },
   jsx: ['TuiInput', 'input', 'label'],
 });
 
 const modal = defineSlotRecipe({
   className: 'tui-modal',
-  definition: 'A modal with old style',
+  description: 'A modal with old style',
   slots: ['modal', 'overlap'],
   base: {
     modal: {
@@ -411,8 +426,8 @@ const modal = defineSlotRecipe({
   },
   variants: {
     active: {
-      overlap: {
-        true: {
+      true: {
+        overlap: {
           display: 'block !important',
         },
       },
@@ -470,17 +485,15 @@ const panel = defineSlotRecipe({
   },
   variants: {
     backgroundColor: {
-      panel: {
-        Black168: { backgroundColor: '{colors.tui.black168}' },
-        Blue168: { backgroundColor: '{colors.tui.blue168}' },
-        Green168: { backgroundColor: '{colors.tui.green168}' },
-        Cyan168: { backgroundColor: '{colors.tui.cyan168}' },
-        Red168: { backgroundColor: '{colors.tui.red168}' },
-        Purple168: { backgroundColor: '{colors.tui.purple168}' },
-        Yellow168: { backgroundColor: '{colors.tui.yellow168}' },
-        White168: { backgroundColor: '{colors.tui.white168}' },
-        Orange168: { backgroundColor: '{colors.tui.orange168}' },
-      },
+      Black168: { panel: { backgroundColor: '{colors.tui.black168}' } },
+      Blue168: { panel: { backgroundColor: '{colors.tui.blue168}' } },
+      Green168: { panel: { backgroundColor: '{colors.tui.green168}' } },
+      Cyan168: { panel: { backgroundColor: '{colors.tui.cyan168}' } },
+      Red168: { panel: { backgroundColor: '{colors.tui.red168}' } },
+      Purple168: { panel: { backgroundColor: '{colors.tui.purple168}' } },
+      Yellow168: { panel: { backgroundColor: '{colors.tui.yellow168}' } },
+      White168: { panel: { backgroundColor: '{colors.tui.white168}' } },
+      Orange168: { panel: { backgroundColor: '{colors.tui.orange168}' } },
     },
   },
 });
@@ -515,102 +528,145 @@ const progressbar = defineSlotRecipe({
   },
   variants: {
     backgroundColor: {
-      bases: {
-        GreenWhite: {
+      GreenWhite: {
+        bases: {
           backgroundImage: '{assets.greenWhite}',
           backgroundRepeat: 'repeat',
         },
-        GreenBlack: {
+      },
+      GreenBlack: {
+        bases: {
           backgroundImage: '{assets.greenBlack}',
           backgroundRepeat: 'repeat',
         },
-        CyanWhite: {
+      },
+      CyanWhite: {
+        bases: {
           backgroundImage: '{assets.cyanWhite}',
           backgroundRepeat: 'repeat',
         },
-        CyanBlack: {
+      },
+      CyanBlack: {
+        bases: {
           backgroundImage: '{assets.cyanBlack}',
           backgroundRepeat: 'repeat',
         },
-        RedWhite: {
+      },
+      RedWhite: {
+        bases: {
           backgroundImage: '{assets.redWhite}',
           backgroundRepeat: 'repeat',
         },
-        RedBlack: {
-          backgroundImage: '{assets.redWhite}',
+      },
+      RedBlack: {
+        bases: {
+          backgroundImage: '{assets.redBlack}',
           backgroundRepeat: 'repeat',
         },
-        PurpleWhite: {
+      },
+      PurpleWhite: {
+        bases: {
           backgroundImage: '{assets.purpleWhite}',
           backgroundRepeat: 'repeat',
         },
-        PurpleBlack: {
+      },
+      PurpleBlack: {
+        bases: {
           backgroundImage: '{assets.purpleBlack}',
           backgroundRepeat: 'repeat',
         },
-        YellowWhite: {
+      },
+      YellowWhite: {
+        bases: {
           backgroundImage: '{assets.yellowWhite}',
           backgroundRepeat: 'repeat',
         },
-        OrangeWhite: {
+      },
+      OrangeWhite: {
+        bases: {
           backgroundImage: '{assets.orangeWhite}',
           backgroundRepeat: 'repeat',
         },
-        OrangeBlack: {
+      },
+      OrangeBlack: {
+        bases: {
           backgroundImage: '{assets.orangeBlack}',
           backgroundRepeat: 'repeat',
         },
       },
     },
+
     foregroundColor: {
-      progress: {
-        GreenWhite: {
+      GreenWhite: {
+        progress: {
           backgroundImage: '{assets.greenWhite}',
           backgroundRepeat: 'repeat',
         },
-        GreenBlack: {
+      },
+      GreenBlack: {
+        progress: {
           backgroundImage: '{assets.greenBlack}',
           backgroundRepeat: 'repeat',
         },
-        CyanWhite: {
+      },
+      CyanWhite: {
+        progress: {
           backgroundImage: '{assets.cyanWhite}',
           backgroundRepeat: 'repeat',
         },
-        CyanBlack: {
+      },
+      CyanBlack: {
+        progress: {
           backgroundImage: '{assets.cyanBlack}',
           backgroundRepeat: 'repeat',
         },
-        RedWhite: {
+      },
+      RedWhite: {
+        progress: {
           backgroundImage: '{assets.redWhite}',
           backgroundRepeat: 'repeat',
         },
-        RedBlack: {
+      },
+      RedBlack: {
+        progress: {
           backgroundImage: '{assets.redWhite}',
           backgroundRepeat: 'repeat',
         },
-        PurpleWhite: {
+      },
+      PurpleWhite: {
+        progress: {
           backgroundImage: '{assets.purpleWhite}',
           backgroundRepeat: 'repeat',
         },
-        PurpleBlack: {
+      },
+      PurpleBlack: {
+        progress: {
           backgroundImage: '{assets.purpleBlack}',
           backgroundRepeat: 'repeat',
         },
-        YellowWhite: {
+      },
+      YellowWhite: {
+        progress: {
           backgroundImage: '{assets.yellowWhite}',
           backgroundRepeat: 'repeat',
         },
-        OrangeWhite: {
+      },
+      OrangeWhite: {
+        progress: {
           backgroundImage: '{assets.orangeWhite}',
           backgroundRepeat: 'repeat',
         },
-        OrangeBlack: {
+      },
+      OrangeBlack: {
+        progress: {
           backgroundImage: '{assets.orangeBlack}',
           backgroundRepeat: 'repeat',
         },
       },
-      intermediate: {
-        true: {
+    },
+    intermediate: {
+      true: {
+        progress: {
           position: 'absolute',
           left: 0,
           backgroundColor: '{colors.tui.cyan255}',
@@ -763,12 +819,16 @@ const radio = defineSlotRecipe({
   },
   variants: {
     disabled: {
-      radio: {
-        true: {
-          color: '{colors.tui.white255}',
+      true: {
+        radio: {
+          color: '{colors.tui.white168}',
+          cursor: 'not-allowed',
         },
       },
     },
+  },
+  defaultVariants: {
+    disabled: false,
   },
   jsx: ['TuiRadio'],
 });
@@ -780,8 +840,8 @@ const shadow = defineRecipe({
     boxShadow: '{shadows.none}',
   },
   variants: {
-    Shadow1: {
-      boxShadow: '{shadows.Shadow1}',
+    shadow: {
+      Shadow1: { boxShadow: '{shadows.Shadow1}' },
       Shadow2: { boxShadow: '{shadows.Shadow2}' },
       Shadow3: { boxShadow: '{shadows.Shadow3}' },
       Shadow4: { boxShadow: '{shadows.Shadow4}' },
@@ -803,11 +863,14 @@ const table = defineSlotRecipe({
   base: {
     table: {
       border: '2px solid rgb(168, 168, 168)',
+      borderRight: '2px solid rgb(168, 168, 168)',
       padding: '5px',
       borderCollapse: 'collapse',
       '& tr td': {
-        padding: '0px 2px',
+        borderRight: '2px solid {colors.tui.white168}',
+        padding: '0px 4px',
       },
+      backgroundColor: '{colors.tui.none}',
     },
     body: {
       backgroundColor: 'inherit',
@@ -825,6 +888,7 @@ const table = defineSlotRecipe({
       textAlign: 'center',
     },
     foot: {
+      borderRight: '2px solid {colors.tui.white168}',
       backgroundColor: 'inherit',
       color: '{colors.tui.yellow255}',
       textAlign: 'center',
@@ -832,12 +896,16 @@ const table = defineSlotRecipe({
   },
   variants: {
     borderRight: {
-      table: {
-        '& tr td': {
-          borderRight: '2px solid {colors.tui.white168}',
+      true: {
+        table: {
+          '& tr td': {
+            borderRight: '2px solid {colors.tui.white168}',
+          },
         },
       },
-      borderBottom: {
+    },
+    borderBottom: {
+      true: {
         table: {
           '& tr td': {
             borderBottom: '2px solid {colors.tui.white168}',
@@ -845,85 +913,119 @@ const table = defineSlotRecipe({
         },
       },
     },
+    backgroundColor: {
+      Black168: { table: { backgroundColor: '{colors.tui.black168}' } },
+      Blue168: { table: { backgroundColor: '{colors.tui.blue168}' } },
+      Green168: { table: { backgroundColor: '{colors.tui.green168}' } },
+      Cyan168: { table: { backgroundColor: '{colors.tui.cyan168}' } },
+      Red168: { table: { backgroundColor: '{colors.tui.red168}' } },
+      Purple168: { table: { backgroundColor: '{colors.tui.purple168}' } },
+      White168: { table: { backgroundColor: '{colors.tui.white168}' } },
+    },
     hover: {
-      body: {
-        cyan: {
+      cyan: {
+        body: {
           '& tr:hover': {
             backgroundColor: '{colors.tui.cyan255}',
             color: 'black',
           },
         },
-        green: {
+      },
+      green: {
+        body: {
           '& tr:hover': {
             backgroundColor: '{colors.tui.green255}',
             color: 'black',
           },
         },
-        blue: {
+      },
+      blue: {
+        body: {
           '& tr:hover': {
             backgroundColor: '{colors.tui.blue255}',
             color: 'white',
           },
         },
-        red: {
+      },
+      red: {
+        body: {
           '& tr:hover': {
             backgroundColor: '{colors.tui.red255}',
             color: 'black',
           },
         },
-        purple: {
+      },
+      purple: {
+        body: {
           '& tr:hover': {
             backgroundColor: '{colors.tui.purple255}',
             color: 'black',
           },
         },
-        white: {
+      },
+      white: {
+        body: {
           '& tr:hover': {
             backgroundColor: '{colors.tui.white255}',
             color: 'black',
           },
         },
-        orange: {
+      },
+      orange: {
+        body: {
           '& tr:hover': {
-            backgroundColor: '{colors.tui.yellow168}',
+            backgroundColor: '{colors.tui.orange168}',
             color: 'black',
           },
         },
       },
     },
     stripped: {
-      body: {
-        blue: {
+      blue: {
+        body: {
           '& tr:nth-child(even)': {
             backgroundColor: '{colors.tui.cyan168}',
           },
         },
-        green: {
+      },
+      green: {
+        body: {
           '& tr:nth-child(even)': {
-            backgroundColor: '{colors.tui.blue168}',
+            backgroundColor: '{colors.tui.green168}',
+            color: '{colors.tui.black255}',
           },
         },
-        cyan: {
+      },
+      cyan: {
+        body: {
           '& tr:nth-child(even)': {
             backgroundColor: '{colors.tui.cyan168}',
           },
         },
-        red: {
+      },
+      red: {
+        body: {
           '& tr:nth-child(even)': {
             backgroundColor: '{colors.tui.red168}',
           },
         },
-        purple: {
+      },
+      purple: {
+        body: {
           '& tr:nth-child(even)': {
             backgroundColor: '{colors.tui.purple168}',
           },
         },
-        yellow: {
+      },
+      yellow: {
+        body: {
           '& tr:nth-child(even)': {
             backgroundColor: '{colors.tui.yellow168}',
           },
         },
-        white: {
+      },
+      white: {
+        body: {
           '& tr:nth-child(even)': {
             backgroundColor: '{colors.tui.white168}',
             color: 'black',
@@ -932,14 +1034,26 @@ const table = defineSlotRecipe({
       },
     },
   },
-  jsx: ['TuiTable'],
+  jsx: [
+    'TuiTable',
+    'table',
+    'tbody',
+    'thead',
+    'tfoot',
+    'tr',
+    'td',
+    'TuiRoot',
+    'TuiBody',
+    'TuiThead',
+    'TuiFoot',
+  ],
 });
 
 const textArea = defineRecipe({
   className: 'tui-textarea',
   description: 'Text Area',
   base: {
-    backgroundColor: 'inherit',
+    backgroundColor: '{colors.tui.black168}',
     border: 'none',
     padding: '0px',
     color: '{colors.tui.yellow255}',
@@ -953,6 +1067,10 @@ const textArea = defineRecipe({
       },
     },
   },
+  defaultVariants: {
+    disabled: 'false',
+  },
+  jsx: ['TuiTextArea'],
 });
 
 export const tuicss: Preset = {
@@ -999,6 +1117,12 @@ export const tuicss: Preset = {
           },
           purpleWhite: {
             value: { type: 'url', value: '/images/bg-purple-white.png' },
+          },
+          redWhite: {
+            value: { type: 'url', value: '/images/bg-red-white.png' },
+          },
+          redBlack: {
+            value: { type: 'url', value: '/images/bg-red-black.png' },
           },
           purpleBlack: {
             value: { type: 'url', value: '/images/bg-purple-black.png' },

@@ -1,47 +1,18 @@
-import { css, cva, type RecipeVariantProps } from '../../../styled-system/css';
-import { Component, JSX, Show, splitProps } from 'solid-js';
-const ttextarea = cva({
-  base: {
-    backgroundColor: 'inherit',
-    border: 'none',
-    padding: '0px',
-    color: 'rgb(255, 255, 0)',
-    outline: 'none',
-  },
-  variants: {
-    disabled: {
-      true: {
-        backgroundColor: 'rgb(168, 168, 168)',
-        color: 'black',
-      },
-    },
-  },
-});
+import { textArea, type TextAreaVariant } from '../../../styled-system/recipes';
+import { Component, JSX } from 'solid-js';
 
-type Shadow = RecipeVariantProps<typeof ttextarea> & {
+type TextArea = TextAreaVariant & {
   children?: JSX.Element;
+  disabled?: boolean;
+  onChange?: (e: Event) => void;
 } & JSX.IntrinsicElements['textarea'];
 
-const TuiTextArea: Component<{}> = (props) => {
-  const [local, _] = splitProps(props, [
-    'rows',
-    'cols',
-    'value',
-    'placeholder',
-    'disabled',
-    'onChange',
-  ]);
+const TuiTextArea: Component<TextArea> = (props: TextArea) => {
   return (
     <textarea
-      onChange={local.onChange}
-      rows={local.rows}
-      cols={local.cols}
-      placeholder={local.placeholder ?? ''}
-      value={value}
-      class={ttextarea({ disabled: local.disabled })}
-    >
-      {props.children}
-    </textarea>
+      {...props}
+      class={textArea({ disabled: props.disabled })}
+    ></textarea>
   );
 };
 
