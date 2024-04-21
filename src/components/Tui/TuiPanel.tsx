@@ -1,95 +1,46 @@
-import { css, cva, type RecipeVariantProps } from '../../../styled-system/css';
 import { Component, JSX, Show, children, splitProps } from 'solid-js';
-import { Portal } from 'solid-js/web';
-import TuiButton from './TuiButton';
+import {
+  ButtonVariant,
+  panel,
+  type PanelVariantProps,
+} from '../../../styled-system/recipes';
 import { HStack } from '../../../styled-system/jsx';
-const panel = cva({
-  base: {
-    backgroundColor: 'rgb(0, 0, 168)',
-    display: 'inline-block',
-    color: 'white',
-    boxShadow: '10px 10px black',
-  },
-});
+import TuiButton from './TuiButton';
+import { TuiDivider } from './TuiDivider';
 
-const header = cva({
-  base: {
-    paddingTop: '2px',
-    display: 'block',
-    background: 'white',
-    textAlign: 'center',
-    color: 'black',
-  },
-});
-
-const content = cva({
-  base: {
-    padding: '12px',
-    backgroundColor: 'inherit',
-  },
-  variants: {
-    color: {
-      Black168: { backgroundColor: 'rgb(0, 0, 0) !important' },
-      Blue168: { backgroundColor: 'rgb(0, 0, 168) !important' },
-      Green168: { backgroundColor: 'rgb(0, 168, 0) !important' },
-      Cyan168: { backgroundColor: 'rgb(0, 168, 168) !important' },
-      Red168: { backgroundColor: 'rgb(168, 0, 0) !important' },
-      Purple168: { backgroundColor: 'rgb(168, 0, 168) !important' },
-      Yellow168: { backgroundColor: 'rgb(168, 168, 0) !important' },
-      White168: { backgroundColor: 'rgb(168, 168, 168) !important' },
-      Orange168: { backgroundColor: 'rgb(168, 86, 0) !important' },
-    },
-  },
-  defaultVariants: {
-    color: 'White168',
-  },
-});
-
-type tpanel = RecipeVariantProps<typeof panel> & {
+type panel = PanelVariantProps & {
   children?: JSX.Element;
   open?: boolean;
-};
+} & JSX.IntrinsicElements['div'] &
+  JSX.IntrinsicElements['header'] &
+  ButtonVariant;
 
-type theader = RecipeVariantProps<typeof header> & {
-  children?: JSX.Element;
-};
-
-type tcontent = RecipeVariantProps<typeof content> & {
-  children?: JSX.Element;
-  onClick?: () => void;
-};
-
-const TuiPanel: Component<tpanel> = (props) => {
-  const [local, _] = splitProps(props, 'open');
-
+const TuiPanel: Component<panel> = (props) => {
+  const r = panel({ ...props });
   return (
-    <Show when={local.open && props.children}>
-      <div class={panel()}>{props.children}</div>;
+    <Show when={props.open && props.children}>
+      <div class={r.panel}>{props.children}</div>
     </Show>
   );
 };
 
-const TuiHeader: Component<theader> = (props) => {
+const TuiHeader: Component<panel> = (props) => {
+  const r = panel();
   return (
     <>
-      <div class={header()}>{props.children}</div>
+      <div class={r.header}>{props.children}</div>
     </>
   );
 };
 
-const TuiContent: Component<tcontent> = (props) => {
-  const [local, _] = splitProps(props, 'onClick', 'color');
+const TuiContent: Component<panel> = (props) => {
+  const r = panel();
   return (
-    <div class={content({ color: local.color })}>
+    <div class={r.content}>
       {props.children}
-      <br />
-      <br></br>
-      <HStack w='100%' alignContent='center' justifyContent='center'>
-        <TuiButton
-          onClick={local.onClick}
-          color='White255'
-          text='Close'
-        ></TuiButton>
+      <TuiDivider></TuiDivider>
+      <HStack w='100%' pt='1' alignContent='center' justifyContent='center'>
+        <TuiButton onClick={props.onClick}>Ok</TuiButton>
       </HStack>
     </div>
   );

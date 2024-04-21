@@ -1,19 +1,19 @@
 import { defineRecipe, defineSlotRecipe, type Preset } from '@pandacss/dev';
 
-export const button = defineRecipe({
+const button = defineRecipe({
   className: 'tui-button',
   description: 'A button with some nice style',
   base: {
     display: 'inline-block',
     outline: '0',
-    padding: '1px 10px',
+    padding: '.0625rem .625rem',
     backgroundColor: '{colors.tui.green255}',
     color: '#000000',
     border: 'none',
     cursor: 'pointer',
     textAlign: 'center',
-    boxShadow: '10px 10px black',
-    borderRadius: '0px',
+    boxShadow: '.625rem .625rem black',
+    borderRadius: '0rem',
     userSelect: 'none',
     _active: {
       backgroundColor: '{colors.tui.cyan168} !important',
@@ -28,6 +28,10 @@ export const button = defineRecipe({
     disabled: {
       true: {
         textDecoration: 'line-through',
+        pointerEvents: 'none',
+        backgroundColor: '{colors.tui.white168}',
+        boxShadow: 'none !important',
+        cursor: 'not-allowed',
       },
     },
     color: {
@@ -52,7 +56,13 @@ export const button = defineRecipe({
       White255: { color: '{colors.tui.white255}' },
       Orange255: { color: '{colors.tui.orange255}' },
     },
+    size: {
+      sm: {
+        fontSize: '1px',
+      },
+    },
   },
+
   defaultVariants: {
     color: 'Green168',
     textColor: 'Black255',
@@ -60,15 +70,15 @@ export const button = defineRecipe({
 
   jsx: ['TuiButton', 'Button', 'button'],
 });
-export const windows = defineRecipe({
+const windows = defineRecipe({
   className: 'tui-windows',
   description: 'Windows',
   base: {
     backgroundColor: '{colors.tui.blue168}',
-    padding: '1px',
+    padding: '.0625rem',
     display: 'inline-block',
     position: 'relative',
-    boxShadow: '10px 10px black',
+    boxShadow: '.625rem .625rem black',
     color: '{colors.tui.white255}',
   },
   variants: {
@@ -139,25 +149,31 @@ export const windows = defineRecipe({
   },
   jsx: ['TuiWindow', 'Window'],
 });
-export const divider = defineRecipe({
+const divider = defineRecipe({
   className: 'tui-divider',
   description: 'A line that divide something?',
   base: {
-    borderBottom: '2px solid rgb(255, 255, 255)',
+    borderBottom: '.125rem solid rgb(255, 255, 255)',
     display: 'block',
-    margin: '6px 0px',
+    margin: '.375rem 0rem',
   },
   variants: {
     black: {
       true: {
-        borderBottom: '2px solid rgb(0, 0, 0)',
+        borderBottom: '.125rem solid rgb(0, 0, 0)',
         display: 'block',
       },
     },
+    space: {
+      true: {
+        marginTop: '3vw',
+        marginBottom: '3vw',
+      },
+    },
   },
-  jsx: ['TuiDivider', 'Divider'],
+  jsx: ['TuiDivider'],
 });
-export const dropdown = defineSlotRecipe({
+const dropdown = defineSlotRecipe({
   className: 'tui-dropdown',
   description: 'A dropdown',
   slots: ['dropdown', 'content'],
@@ -175,37 +191,50 @@ export const dropdown = defineSlotRecipe({
       display: 'none',
       position: 'absolute',
       backgroundColor: 'rgb(168, 168, 168)',
-      minWidth: '200px',
-      padding: '6px',
+      minWidth: '12.5rem',
+      padding: '.375rem',
       zIndex: 9,
       '& ul': {
-        border: '2px black solid',
+        border: '.125rem black solid',
       },
       '& ul li': {
         display: 'block !important',
-        margin: '6px',
+        margin: '.375rem',
       },
       '& ul li a:hover': {
         backgroundColor: 'rgb(0, 168, 0)',
       },
     },
   },
+  variants: {
+    disabled: {
+      true: {
+        content: {
+          '& tr td': {
+            color: 'rgb(168, 168, 168)',
+            cursor: 'not-allowed',
+          },
+        },
+      },
+    },
+  },
+  jsx: ['TuiDropdown', 'Dropdown', 'TuiOption', 'Option', 'li', 'a'],
 });
-export const fieldset = defineSlotRecipe({
+const fieldset = defineSlotRecipe({
   className: 'tui-fieldset',
   description: 'A Fieldset',
   slots: ['fieldset', 'legend'],
   base: {
     fieldset: {
-      border: '6px white double',
-      padding: '12px',
+      border: '0.375rem white double',
+      padding: '1.125rem',
       backgroundColor: 'inherit',
-      marginBottom: '6px',
+      marginBottom: '0.375rem',
     },
     legend: {
       color: 'rgb(255, 255, 0)',
       textAlign: 'center',
-      fontSize: '2rem',
+      fontSize: '{fontSizes.sm}',
       fontWeight: 'bold',
     },
   },
@@ -221,7 +250,7 @@ export const fieldset = defineSlotRecipe({
       true: {
         fieldset: {
           borderStyle: 'dotted !important',
-          borderWidth: '2px !important',
+          borderWidth: '{borderWidths.md}',
         },
       },
     },
@@ -229,7 +258,7 @@ export const fieldset = defineSlotRecipe({
       true: {
         fieldset: {
           borderStyle: 'solid !important',
-          borderWidth: '2px !important',
+          borderWidth: '{borderWidths.md}',
         },
       },
     },
@@ -237,7 +266,7 @@ export const fieldset = defineSlotRecipe({
       true: {
         fieldset: {
           borderStyle: 'double !important',
-          borderWidth: '6px !important',
+          borderWidth: '{borderWidths.md}',
         },
       },
     },
@@ -245,7 +274,7 @@ export const fieldset = defineSlotRecipe({
       true: {
         fieldset: {
           borderStyle: 'dashed !important',
-          borderWidth: '2px !important',
+          borderWidth: '{borderWidths.md}',
         },
       },
     },
@@ -338,7 +367,7 @@ export const fieldset = defineSlotRecipe({
   },
   jsx: ['TuiFieldset', 'fieldset', 'legend'],
 });
-export const input = defineSlotRecipe({
+const input = defineSlotRecipe({
   className: 'tui-input',
   description: 'Input',
   slots: ['input', 'label'],
@@ -356,9 +385,9 @@ export const input = defineSlotRecipe({
     },
     label: {
       color: 'white',
-      w: '100px',
+      w: '6.25rem',
       display: 'inline-block',
-      marginRight: '10px',
+      marginRight: '.625rem',
     },
   },
   variants: {
@@ -379,8 +408,8 @@ export const input = defineSlotRecipe({
     size: {
       sm: {
         label: {
-          w: '70px',
-          marginRight: '5px',
+          w: '4.375rem',
+          marginRight: '.3125rem',
         },
       },
     },
@@ -415,10 +444,10 @@ const modal = defineSlotRecipe({
     },
     overlap: {
       position: 'absolute',
-      top: '0px',
-      left: '0px',
-      right: '0px',
-      bottom: '0px',
+      top: '0rem',
+      left: '0rem',
+      right: '0rem',
+      bottom: '0rem',
       backgroundColor: 'rgba(0, 0, 0, 0.5)',
       zIndex: 100,
       display: 'none',
@@ -435,28 +464,28 @@ const modal = defineSlotRecipe({
   },
 });
 
-const nav = defineRecipe({
+const navbar = defineRecipe({
   className: 'tui-navbar',
   description: 'Navbar',
   base: {
     width: '100%',
-    backgroundColor: '{color.tui.white168}',
-    padding: '0px 2px',
+    backgroundColor: '{colors.tui.white168}',
+    padding: '0rem .125rem',
     zIndex: 9,
     display: 'block',
-    position: 'fixed',
+    position: 'relative',
     '& ul li': {
       display: 'inline-block',
-      marginLeft: '10px',
-      padding: '1px 3px',
+      marginLeft: '.625rem',
+      padding: '.0625rem .1875rem',
     },
     '& ul li a': {
       display: 'block',
       userSelect: 'none',
     },
-    '& ul li:hover': { backgroundColor: '{color.tui.green168}' },
+    '& ul li:hover': { backgroundColor: '{colors.tui.green168}' },
   },
-  jsx: ['TuiNavbar', 'navbar'],
+  jsx: ['TuiNav', 'navbar', 'nav'],
 });
 
 const panel = defineSlotRecipe({
@@ -465,22 +494,23 @@ const panel = defineSlotRecipe({
   slots: ['panel', 'header', 'content'],
   base: {
     panel: {
-      backgroundColor: '{colors.tui.blue168}',
+      backgroundColor: '{colors.tui.white168}',
       display: 'inline-block',
       color: 'white',
-      boxShadow: '10px 10px black',
+      boxShadow: '.625rem .625rem black',
+      maxW: '50vw',
     },
     header: {
-      paddingTop: '2px',
+      paddingTop: '.125rem',
       display: 'block',
       background: 'white',
       textAlign: 'center',
       color: 'black',
     },
     content: {
-      padding: '12px',
+      padding: '1.125rem',
       backgroundColor: 'inherit',
-      color: '{colors.tui.white168}',
+      color: '{colors.tui.black255}',
     },
   },
   variants: {
@@ -496,6 +526,7 @@ const panel = defineSlotRecipe({
       Orange168: { panel: { backgroundColor: '{colors.tui.orange168}' } },
     },
   },
+  jsx: ['TuiPanel', 'TuiHeader', 'TuiContent'],
 });
 
 const progressbar = defineSlotRecipe({
@@ -506,8 +537,8 @@ const progressbar = defineSlotRecipe({
     bases: {
       display: 'block',
       position: 'relative',
-      height: '20px',
-      width: '200px',
+      height: '1.25rem',
+      width: '12.5rem',
       backgroundColor: '{colors.tui.cyan168}',
       overflow: 'hidden',
     },
@@ -520,7 +551,7 @@ const progressbar = defineSlotRecipe({
     },
     progress: {
       position: 'absolute',
-      left: '0px',
+      left: '0rem',
       backgroundColor: '{colors.tui.cyan255}',
       height: '100%',
       display: 'inline-block',
@@ -687,21 +718,21 @@ const screen = defineRecipe({
   className: 'tui-screen',
   description: 'Screen',
   base: {
-    width: '640px',
-    height: '480px',
+    width: '40rem',
+    height: '30rem',
     position: 'relative',
     overflow: 'hidden',
   },
   variants: {
     bordered: {
       true: {
-        border: '2px solid black',
+        border: '.125rem solid black',
       },
     },
     centered: {
       true: {
         margin: 'auto',
-        marginTop: '20px',
+        marginTop: '1.25rem',
       },
     },
     backgroundColor: {
@@ -752,20 +783,20 @@ const screen = defineRecipe({
     },
     size: {
       sm: {
-        width: '640px',
-        height: '480px',
+        width: '40rem',
+        height: '30rem',
         position: 'relative',
         overflow: 'hidden',
       },
       md: {
-        width: '800px',
-        height: '600px',
+        width: '50rem',
+        height: '37.5rem',
         position: 'relative',
         overflow: 'hidden',
       },
       lg: {
-        width: '1024px',
-        height: '768px',
+        width: '64rem',
+        height: '48rem',
         position: 'relative',
         overflow: 'hidden',
       },
@@ -789,7 +820,7 @@ const radio = defineSlotRecipe({
       position: 'relative',
       cursor: 'pointer',
       color: 'white',
-      paddingLeft: '35px',
+      paddingLeft: '2.1875rem',
       userSelect: 'none',
     },
     input: {
@@ -804,14 +835,14 @@ const radio = defineSlotRecipe({
         color: '{colors.tui.cyan255}',
       },
       '&:not(checked) ~ span:after': {
-        padding: 'right 3px',
+        padding: 'right .1875rem',
         content: '"( )"',
       },
     },
     span: {
       position: 'absolute',
-      width: '10px',
-      height: '10px',
+      width: '.625rem',
+      height: '.625rem',
       cursor: 'pointer',
       top: 0,
       left: 0,
@@ -862,44 +893,52 @@ const table = defineSlotRecipe({
   slots: ['table', 'body', 'thead', 'foot'],
   base: {
     table: {
-      border: '2px solid rgb(168, 168, 168)',
-      borderRight: '2px solid rgb(168, 168, 168)',
-      padding: '5px',
+      border: '.125rem solid rgb(168, 168, 168)',
+      borderRight: '.125rem solid rgb(168, 168, 168)',
+      padding: '.3125rem',
+
       borderCollapse: 'collapse',
+      userSelect: 'none',
       '& tr td': {
-        borderRight: '2px solid {colors.tui.white168}',
-        padding: '0px 4px',
+        borderRight: '.125rem solid {colors.tui.white168}',
+        padding: '0rem .45rem',
+        userSelect: 'none',
       },
       backgroundColor: '{colors.tui.none}',
     },
     body: {
       backgroundColor: 'inherit',
+      userSelect: 'none',
       color: 'white',
       '& tr td': {
-        borderRight: '2px solid rgb(168, 168, 168)',
-        padding: '0px 2px',
+        borderRight: '.190rem solid rgb(168, 168, 168)',
+        padding: '0rem .190rem',
+        userSelect: 'none',
       },
     },
     thead: {
-      borderRight: '2px solid rgb(168, 168, 168)',
-      padding: '0px 2px',
+      borderRight: '.125rem solid rgb(168, 168, 168)',
+      padding: '0rem .125rem',
       backgroundColor: 'inherit',
       color: '{colors.tui.yellow255}',
       textAlign: 'center',
+      userSelect: 'none',
     },
     foot: {
-      borderRight: '2px solid {colors.tui.white168}',
+      borderRight: '.125rem solid {colors.tui.white168}',
       backgroundColor: 'inherit',
       color: '{colors.tui.yellow255}',
       textAlign: 'center',
+      userSelect: 'none',
     },
   },
+
   variants: {
     borderRight: {
       true: {
         table: {
           '& tr td': {
-            borderRight: '2px solid {colors.tui.white168}',
+            borderRight: '.125rem solid {colors.tui.white168}',
           },
         },
       },
@@ -908,7 +947,7 @@ const table = defineSlotRecipe({
       true: {
         table: {
           '& tr td': {
-            borderBottom: '2px solid {colors.tui.white168}',
+            borderBottom: '.125rem solid {colors.tui.white168}',
           },
         },
       },
@@ -1055,7 +1094,7 @@ const textArea = defineRecipe({
   base: {
     backgroundColor: '{colors.tui.black168}',
     border: 'none',
-    padding: '0px',
+    padding: '0rem',
     color: '{colors.tui.yellow255}',
     outline: 'none',
   },
@@ -1068,9 +1107,18 @@ const textArea = defineRecipe({
     },
   },
   defaultVariants: {
-    disabled: 'false',
+    disabled: false,
   },
   jsx: ['TuiTextArea'],
+});
+
+const shortcut = defineRecipe({
+  className: 'tui-shortcut',
+  description: 'Shortcut',
+  base: {
+    float: 'right',
+  },
+  jsx: ['TuiShortcut'],
 });
 
 export const tuicss: Preset = {
@@ -1079,6 +1127,7 @@ export const tuicss: Preset = {
       tokens: {
         colors: {
           tui: {
+            none: { value: 'transparent !important' },
             white168: { value: '#a8a8a8 !important' },
             black168: { value: '#000000 !important' },
             blue168: { value: '#0000a8 !important' },
@@ -1100,7 +1149,7 @@ export const tuicss: Preset = {
           },
         },
         fonts: {
-          DOS: { value: 'DOS, sans-serif' },
+          body: { value: 'DOS, sans-serif' },
         },
         assets: {
           greenWhite: {
@@ -1137,28 +1186,42 @@ export const tuicss: Preset = {
             value: { type: 'url', value: '/images/bg-orange-black.png' },
           },
         },
+        fontSizes: {
+          sm: { value: '1.25rem' },
+          md: { value: '1.35rem' },
+          lg: { value: '1.5rem' },
+          xl: { value: '2rem' },
+        },
         shadows: {
           none: { value: 'none !important' },
-          Shadow1: { value: '10px 10px black !important' },
-          Shadow2: { value: '15px 15px black' },
-          Shadow3: { value: '20px 20px black' },
-          Shadow4: { value: '25px 25px black' },
-          Shadow5: { value: '30px 30px black' },
-          Shadow1left: { value: '-10px 10px black !important' },
-          Shadowleft2: { value: '-15px 15px black !important' },
-          Shadowleft3: { value: '-20px 20px black !important' },
-          Shadowleft4: { value: '-25px 25px black !important' },
-          Shadowleft5: { value: '-30px 30px black !important' },
+          Shadow1: { value: '.625rem .625rem black !important' },
+          Shadow2: { value: '.9375rem .9375rem black' },
+          Shadow3: { value: '1.25rem 1.25rem black' },
+          Shadow4: { value: '1.5625rem 1.5625rem black' },
+          Shadow5: { value: '1.875rem 1.875rem black' },
+          Shadow1left: { value: '-0.625rem .625rem black !important' },
+          Shadowleft2: { value: '-0.9375rem .9375rem black !important' },
+          Shadowleft3: { value: '-1.25rem 1.25rem black !important' },
+          Shadowleft4: { value: '-1.5625rem 1.5625rem black !important' },
+          Shadowleft5: { value: '-1.875rem 1.875rem black !important' },
+        },
+        borderWidths: {
+          none: { value: '0 !important' },
+          sm: { value: '.0625rem !important' },
+          md: { value: '.125rem !important' },
+          lg: { value: '.25rem !important' },
+          xl: { value: '.5rem !important' },
         },
       },
       recipes: {
         button,
         windows,
         divider,
-        nav,
+        navbar,
         screen,
         shadow,
         textArea,
+        shortcut,
       },
       slotRecipes: {
         dropdown,

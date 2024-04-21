@@ -1,11 +1,13 @@
 import { createEffect, createSignal } from 'solid-js';
 
-import { Box, VStack, styled } from '../styled-system/jsx';
+import { Box, VStack } from '../styled-system/jsx';
 import { TuiScreenLarge } from './components/Tui/TuiScreen';
 import TuiButton from './components/Tui/TuiButton';
 import TuiWindow from './components/Tui/TuiWindow';
-import { TuiBody, TuiFoot, TuiThead, TuiRoot } from './components/Tui/TuiTable';
-
+import { TuiDropdown, TuiOption } from './components/Tui/TuiDropdown';
+import TuiInput from './components/Tui/TuiInput';
+import TuiNav from './components/Tui/TuiNav';
+import { TuiPanel, TuiHeader, TuiContent } from './components/Tui/TuiPanel';
 function App() {
   const [count, setCount] = createSignal(0);
   createEffect(() => console.log(count()));
@@ -31,39 +33,30 @@ function App() {
             textColor='Black255'
             color='Red168'
             onClick={() => console.log('CLicked')}
-            disabled
           >
             Jerico2
           </TuiButton>
+
+          <TuiInput textColor='Black255' color='Green168'>
+            asddsa
+          </TuiInput>
           <TuiWindow backgroundColor='RedBlack' sizes='large'>
-            <Box w='35vw' h='20vh' m='5'>
-              <TuiRoot borderBottom>
-                <TuiThead>
-                  <tr>
-                    <td>Firstname</td>
-                    <td>Lastname</td>
-                    <td>CitizenID</td>
-                  </tr>
-                </TuiThead>
-                <TuiBody stripped='green' hover='purple'>
-                  <tr>
-                    <td>Jerico</td>
-                    <td>FX</td>
-                    <td>ASDFF</td>
-                  </tr>
-                  <tr>
-                    <td>Jerico</td>
-                    <td>FX</td>
-                    <td>ASDFF</td>
-                  </tr>
-                </TuiBody>
-                <TuiFoot>
-                  <tr>
-                    <td>Footer</td>
-                    <td>Footer</td>
-                  </tr>
-                </TuiFoot>
-              </TuiRoot>
+            <TuiNav>
+              <TuiDropdown>
+                <TuiOption>Jerico</TuiOption>
+              </TuiDropdown>
+            </TuiNav>
+            <Box w='50vw' h='20vh' m='5'>
+              <TuiPanel open>
+                <TuiHeader>Autodestruccion</TuiHeader>
+                <TuiContent
+                  onClick={(e) => {
+                    console.log('WAC');
+                  }}
+                >
+                  Esta ventana se va a autodestruir en cualquier momento
+                </TuiContent>
+              </TuiPanel>
             </Box>
           </TuiWindow>
         </VStack>

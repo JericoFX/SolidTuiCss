@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "prepare": "panda codegen",
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "bunx --bun vite",
+    "build": "bunx --bun vite build",
     "preview": "vite preview"
   },
   "dependencies": {

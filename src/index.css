@@ -7,7 +7,7 @@
 
 html {
   font-family: 'DOS', 'monospace';
-  font-size: 18px;
+  font-size: 20px;
   box-sizing: border-box;
 }
 
@@ -48,13 +48,13 @@ span {
 
 hr {
   border: none;
-  border-bottom: 2px solid rgb(255, 255, 255);
+  border-bottom: 0.125rem solid rgb(255, 255, 255);
 }
 
 input,
 select,
 textarea {
-  width: 200px;
+  width: 12.5rem;
 }
 body {
   margin: 0px;
