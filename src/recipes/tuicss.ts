@@ -430,7 +430,6 @@ const input = defineSlotRecipe({
   },
   jsx: ['TuiInput', 'input', 'label'],
 });
-
 const modal = defineSlotRecipe({
   className: 'tui-modal',
   description: 'A modal with old style',
@@ -463,7 +462,6 @@ const modal = defineSlotRecipe({
     },
   },
 });
-
 const navbar = defineRecipe({
   className: 'tui-navbar',
   description: 'Navbar',
@@ -487,7 +485,6 @@ const navbar = defineRecipe({
   },
   jsx: ['TuiNav', 'navbar', 'nav'],
 });
-
 const panel = defineSlotRecipe({
   className: 'tui-panel',
   description: 'A nice panel',
@@ -528,7 +525,6 @@ const panel = defineSlotRecipe({
   },
   jsx: ['TuiPanel', 'TuiHeader', 'TuiContent'],
 });
-
 const progressbar = defineSlotRecipe({
   className: 'tui-progress',
   description: 'A nice progressbar',
@@ -713,7 +709,6 @@ const progressbar = defineSlotRecipe({
   },
   jsx: ['TuiProgress', 'progress'],
 });
-
 const screen = defineRecipe({
   className: 'tui-screen',
   description: 'Screen',
@@ -809,7 +804,6 @@ const screen = defineRecipe({
   },
   jsx: ['TuiScreen'],
 });
-
 const radio = defineSlotRecipe({
   className: 'tui-radio',
   description: 'Radio Buttons',
@@ -863,7 +857,6 @@ const radio = defineSlotRecipe({
   },
   jsx: ['TuiRadio'],
 });
-
 const shadow = defineRecipe({
   className: 'tui-shadow',
   description: 'SHADOW',
@@ -886,7 +879,6 @@ const shadow = defineRecipe({
   },
   jsx: ['TuiShadow'],
 });
-
 const table = defineSlotRecipe({
   className: 'tui-table',
   description: 'Tui Table',
@@ -1087,7 +1079,6 @@ const table = defineSlotRecipe({
     'TuiFoot',
   ],
 });
-
 const textArea = defineRecipe({
   className: 'tui-textarea',
   description: 'Text Area',
@@ -1111,7 +1102,6 @@ const textArea = defineRecipe({
   },
   jsx: ['TuiTextArea'],
 });
-
 const shortcut = defineRecipe({
   className: 'tui-shortcut',
   description: 'Shortcut',
@@ -1119,6 +1109,53 @@ const shortcut = defineRecipe({
     float: 'right',
   },
   jsx: ['TuiShortcut'],
+});
+const tabs = defineSlotRecipe({
+  className: 'tui-tabs',
+  description: 'Tabs',
+  slots: ['Root', 'tab', 'content'],
+  base: {
+    Root: {
+      backgroundColor: '{colors.tui.blue168}',
+      width: '100%',
+      padding: '0px 0.625rem 0px 0.625rem',
+      '& ul li': {
+        display: 'inline-block',
+      },
+      '& ul li a': {
+        display: 'block',
+        userSelect: 'none',
+        WebkitUserSelect: 'none',
+        KhtmlUserSelect: 'none',
+        MozUserSelect: 'none',
+        MsUserSelect: 'none',
+      },
+    },
+    tab: {
+      padding: '0.125rem 0.625rem 0px 0.625rem',
+      color: '{colors.tui.black255}',
+      cursor: 'pointer',
+      _active: {
+        backgroundColor: 'rgb(168, 168, 168)',
+        color: 'rgb(0, 0, 168)',
+      },
+    },
+    content: {
+      display: 'none',
+    },
+  },
+  variants: {
+    disabled: {
+      true: {
+        tab: {
+          textDecoration: 'line-through',
+          pointerEvents: 'none',
+          backgroundColor: '{colors.tui.white168}',
+        },
+      },
+    },
+  },
+  jsx: ['TuiTabs', 'Root', 'tab', 'content'],
 });
 
 export const tuicss: Preset = {
@@ -1232,6 +1269,7 @@ export const tuicss: Preset = {
         progressbar,
         radio,
         table,
+        tabs,
       },
     },
   },
