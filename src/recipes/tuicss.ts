@@ -177,12 +177,13 @@ const dropdown = defineSlotRecipe({
   className: 'tui-dropdown',
   description: 'A dropdown',
   slots: ['dropdown', 'content'],
+
   base: {
     dropdown: {
       position: 'relative',
       display: 'inline-block',
       cursor: 'pointer',
-      userSelect: 'none',
+      padding: '.0625rem .625rem',
       '&:hover > div:first-of-type': {
         display: 'block',
       },
@@ -192,10 +193,10 @@ const dropdown = defineSlotRecipe({
       position: 'absolute',
       backgroundColor: 'rgb(168, 168, 168)',
       minWidth: '12.5rem',
-      padding: '.375rem',
       zIndex: 9,
       '& ul': {
         border: '.125rem black solid',
+        margin: '.375rem',
       },
       '& ul li': {
         display: 'block !important',
@@ -218,7 +219,7 @@ const dropdown = defineSlotRecipe({
       },
     },
   },
-  jsx: ['TuiDropdown', 'Dropdown', 'TuiOption', 'Option', 'li', 'a'],
+  jsx: ['TuiDropdown', 'Dropdown', 'TuiOption', 'Option', 'ul', 'li', 'a'],
 });
 const fieldset = defineSlotRecipe({
   className: 'tui-fieldset',
@@ -469,20 +470,24 @@ const navbar = defineRecipe({
   base: {
     width: '100%',
     backgroundColor: '{colors.tui.white168}',
-    padding: '0rem .125rem',
+    color: '{colors.tui.black255}',
+    padding: '0px 4px',
     zIndex: 9,
     display: 'block',
     position: 'relative',
+
     '& ul li': {
       display: 'inline-block',
       marginLeft: '.625rem',
       padding: '.0625rem .1875rem',
+      _hover: {
+        backgroundColor: '{colors.tui.green168}',
+      },
     },
     '& ul li a': {
       display: 'block',
       userSelect: 'none',
     },
-    '& ul li:hover': { backgroundColor: '{colors.tui.green168}' },
   },
   jsx: ['TuiNav', 'navbar', 'nav'],
 });

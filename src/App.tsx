@@ -21,6 +21,15 @@ function App() {
               <TuiTitle title='Wachines'>
                 <TuiDropdown>
                   <TuiOption>New Report</TuiOption>
+                  <TuiOption>New Report</TuiOption>
+                  <TuiOption>New Report</TuiOption>
+                  <TuiOption>New Report</TuiOption>
+                  <TuiOption>New Report</TuiOption>
+                </TuiDropdown>
+              </TuiTitle>
+              <TuiTitle title='Wachines1'>
+                <TuiDropdown>
+                  <TuiOption>New Report</TuiOption>
                 </TuiDropdown>
               </TuiTitle>
             </TuiNav>
