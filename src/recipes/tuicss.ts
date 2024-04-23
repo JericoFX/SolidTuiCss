@@ -378,6 +378,7 @@ const input = defineSlotRecipe({
       outline: 0,
       border: 'none',
       borderRadius: 0,
+      verticalAlign: 'middle',
       _focus: {
         backgroundColor: 'rgb(255, 255, 0) !important',
         color: 'black !important',

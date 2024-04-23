@@ -1,5 +1,6 @@
-import { input, type InputVariant } from '../../../styled-system/recipes';
-import { Component, JSX, Show, splitProps } from 'solid-js';
+import { Component, JSX } from 'solid-js';
+import { type InputVariant, input } from '../../../styled-system/recipes';
+
 type TuiInputProps = JSX.IntrinsicElements['input'] & {
   size?: InputVariant['size'];
   disabled?: InputVariant['disabled'];
