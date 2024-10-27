@@ -1,4 +1,5 @@
 import { defineRecipe, defineSlotRecipe, type Preset } from '@pandacss/dev';
+//LOS NOMBRES TIENEN QUE SER CORRELATIVOS CON LOS TSX!!!!!!!!
 const button = defineRecipe({
   className: 'tui-button',
   description: 'A button with some nice style',
