@@ -1,5 +1,4 @@
 import { defineRecipe, defineSlotRecipe, type Preset } from '@pandacss/dev';
-
 const button = defineRecipe({
   className: 'tui-button',
   description: 'A button with some nice style',
@@ -1163,6 +1162,70 @@ const tabs = defineSlotRecipe({
   },
   jsx: ['TuiTabs', 'Root', 'tab', 'content'],
 });
+const checkbox = defineSlotRecipe({
+  className: 'tui-checkbox',
+  slots: ['base', 'input', 'span'],
+  base: {
+    base: {
+      display: 'block',
+      position: 'relative',
+      cursor: 'pointer',
+      color: 'white',
+      paddingLeft: '30px',
+      userSelect: 'none',
+    },
+    input: {
+      position: 'absolute',
+      opacity: 0,
+      cursor: 'pointer',
+      top: '0px',
+      left: '0px',
+      pointerEvents: 'none',
+      '&:checked ~ span:after': {
+        content: '"[√]"',
+        color: 'rgb(0, 255, 255)',
+      },
+      '&:not(checked) ~ span:after': {
+        content: '"[ ]"',
+        color: 'rgb(0, 255, 255)',
+      },
+      marginLeft: '-20px',
+    },
+    span: {
+      position: 'absolute',
+      width: '10px',
+      height: '10px',
+      cursor: 'pointer',
+      top: '0px',
+      left: '0px',
+    },
+  },
+  variants: {
+    disabled: {
+      true: {
+        base: {
+          color: '{colors.tui.white168}',
+          cursor: 'not-allowed',
+        },
+        input: {
+          cursor: 'not-allowed',
+          color: '{colors.tui.white168}',
+        },
+        span: {
+          cursor: 'not-allowed',
+          color: '{colors.tui.white168}',
+          _after: {
+            color: '{colors.tui.white168}',
+          },
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    disabled: false,
+  },
+  jsx: ['TuiCheckbox', 'input'],
+});
 
 export const tuicss: Preset = {
   theme: {
@@ -1276,6 +1339,7 @@ export const tuicss: Preset = {
         radio,
         table,
         tabs,
+        checkbox,
       },
     },
   },

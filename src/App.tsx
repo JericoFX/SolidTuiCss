@@ -4,6 +4,7 @@ import { TuiScreenLarge } from './components/Tui/TuiScreen';
 import TuiWindow from './components/Tui/TuiWindow';
 import TuiInput from './components/Tui/TuiInput';
 import { TuiDropdown, TuiOption, TuiTitle } from './components/Tui/TuiDropdown';
+import TuiCheckbox from './components/Tui/TuiCheckbox';
 
 function App() {
   return (
@@ -18,23 +19,17 @@ function App() {
         >
           <TuiWindow backgroundColor='RedBlack' sizes='large'>
             <TuiNav>
-              <TuiTitle title='Wachines'>
-                <TuiDropdown>
-                  <TuiOption>New Report</TuiOption>
-                  <TuiOption>New Report</TuiOption>
-                  <TuiOption>New Report</TuiOption>
-                  <TuiOption>New Report</TuiOption>
-                  <TuiOption>New Report</TuiOption>
-                </TuiDropdown>
-              </TuiTitle>
-              <TuiTitle title='Wachines1'>
-                <TuiDropdown>
-                  <TuiOption>New Report</TuiOption>
-                </TuiDropdown>
-              </TuiTitle>
+              <TuiTitle>Menu</TuiTitle>
+              <TuiOption>Option</TuiOption>
+              <TuiOption>Option</TuiOption>
+              <TuiOption>Option</TuiOption>
             </TuiNav>
             <Box w='50vw' h='20vh'>
-              <TuiInput label='Jerico.....:'></TuiInput>
+              <TuiCheckbox
+                onChange={(e) => console.log(e.target.checked)}
+                label='Jerico'
+                disabled={false}
+              ></TuiCheckbox>
             </Box>
           </TuiWindow>
         </VStack>
