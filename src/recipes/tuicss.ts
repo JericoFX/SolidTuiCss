@@ -148,7 +148,7 @@ const windows = defineRecipe({
   },
   jsx: ['TuiWindow', 'Window'],
 });
-const divider = defineRecipe({
+const dividers = defineRecipe({
   className: 'tui-divider',
   description: 'A line that divide something?',
   base: {
@@ -170,7 +170,7 @@ const divider = defineRecipe({
       },
     },
   },
-  jsx: ['TuiDivider'],
+  jsx: ['TuiDivider', 'div'],
 });
 const dropdown = defineSlotRecipe({
   className: 'tui-dropdown',
@@ -562,13 +562,12 @@ const progressbar = defineSlotRecipe({
     backgroundColor: {
       GreenWhite: {
         bases: {
-          backgroundImage: '{assets.greenWhite}',
-          backgroundRepeat: 'repeat',
+          backgroundColor: '{colors.tui.green168}',
         },
       },
       GreenBlack: {
         bases: {
-          backgroundImage: '{assets.greenBlack}',
+          backgroundImage: '{colors.tui.greenBlack}',
           backgroundRepeat: 'repeat',
         },
       },
@@ -712,7 +711,7 @@ const progressbar = defineSlotRecipe({
       },
     },
   },
-  jsx: ['TuiProgress', 'progress'],
+  jsx: ['TuiProgressBar', 'progress'],
 });
 const screen = defineRecipe({
   className: 'tui-screen',
@@ -1322,7 +1321,7 @@ export const tuicss: Preset = {
       recipes: {
         button,
         windows,
-        divider,
+        dividers,
         navbar,
         screen,
         shadow,

@@ -5,8 +5,16 @@ import TuiWindow from './components/Tui/TuiWindow';
 import TuiInput from './components/Tui/TuiInput';
 import { TuiDropdown, TuiOption, TuiTitle } from './components/Tui/TuiDropdown';
 import TuiCheckbox from './components/Tui/TuiCheckbox';
+import TuiProgressBar from './components/Tui/TuiProgressBar';
 
-function App() {
+/*************  ✨ Codeium Command ⭐  *************/
+/**
+ * The main component of the application. This component renders a centered
+ * TuiScreenLarge with a single TuiWindow containing a TuiProgressBar.
+ *
+ * @returns The main component of the application.
+ */
+/******  fabedc11-b33b-495a-9c5f-1853470e6ee1  *******/ function App() {
   return (
     <>
       <TuiScreenLarge bordered={true} backgroundColor='OrangeBlack' centered>
@@ -18,18 +26,12 @@ function App() {
           gap={2}
         >
           <TuiWindow backgroundColor='RedBlack' sizes='large'>
-            <TuiNav>
-              <TuiTitle>Menu</TuiTitle>
-              <TuiOption>Option</TuiOption>
-              <TuiOption>Option</TuiOption>
-              <TuiOption>Option</TuiOption>
-            </TuiNav>
             <Box w='50vw' h='20vh'>
-              <TuiCheckbox
-                onChange={(e) => console.log(e.target.checked)}
-                label='Jerico'
-                disabled={false}
-              ></TuiCheckbox>
+              <TuiProgressBar
+                backgroundColor={'GreenWhite'}
+                foregroundColor={'PurpleBlack'}
+                width={50}
+              ></TuiProgressBar>
             </Box>
           </TuiWindow>
         </VStack>
