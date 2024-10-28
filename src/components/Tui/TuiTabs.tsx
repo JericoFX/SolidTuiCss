@@ -2,8 +2,9 @@
 import { TabsProvider, useTabContext } from "./TuiTabsContext"
 import { tabs } from "../../../styled-system/recipes"
 import { Component, JSX, createUniqueId } from "solid-js";
-const r = tabs()
+
 export const TabsRoot: Component<{ children: JSX.Element }> = (props) => {
+    const r = tabs({colors:props.colors})
     return (
         <TabsProvider>
             {' '}
@@ -18,6 +19,7 @@ export const TabsRoot: Component<{ children: JSX.Element }> = (props) => {
 };
 
 export const TabsTab: Component<{ children: JSX.Element }> = (props) => {
+    const r = tabs()
     const { tab, setTab } = useTabContext()
     return (
         <li ><a onClick={() => setTab(props.id)} class={`${r.tab} ${tab() === props.id ? "active" : ''}`} id={props.id}>{props.children}</a></li>
@@ -25,6 +27,7 @@ export const TabsTab: Component<{ children: JSX.Element }> = (props) => {
 }
 
 export const TabsContent: Component<{ children: JSX.Element }> = (props) => {
+    const r = tabs()
     const { tab, setTab } = useTabContext()
     return (
         <div id={props.id} class={`${props.id !== tab() ? r.content : "active"}`}>

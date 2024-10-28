@@ -1136,6 +1136,10 @@ const tabs = defineSlotRecipe({
         MozUserSelect: 'none',
         MsUserSelect: 'none',
       },
+      '& div':{
+        backgroundColor: '{colors.tui.white168}',
+        color: 'rgb(0, 0, 168)',
+      }
     },
     tab: {
       padding: '0.125rem 0.625rem 0px 0.625rem',
@@ -1148,13 +1152,10 @@ const tabs = defineSlotRecipe({
       "&.active":{
         backgroundColor: "rgb(168, 168, 168)",
         color: "rgb(0, 0, 168)" 
-      }
+      },
+     
     },
     content: {
-      "& __tui-Root.active":{
-        backgroundColor: 'rgb(168, 168, 168)',
-        color: 'rgb(0, 0, 168)',
-      },
       display: 'none',
     },
   },
@@ -1168,8 +1169,19 @@ const tabs = defineSlotRecipe({
         },
       },
     },
+    colors:{
+      Black255: { tab: { backgroundColor: '{colors.tui.black255}' } },
+      Blue255: { tab: { backgroundColor: '{colors.tui.blue255}' } },
+      Green255: { tab: { backgroundColor: '{colors.tui.green255}' } },
+      Cyan255: { tab: { backgroundColor: '{colors.tui.cyan255}' } },
+      Red255: { tab: { backgroundColor: '{colors.tui.red255}' } },
+      Purple255: { tab: { backgroundColor: '{colors.tui.purple255}' } },
+      Yellow255: { tab: { backgroundColor: '{colors.tui.yellow255}' } },
+      White255: { tab: { backgroundColor: '{colors.tui.white255}' } },
+      Orange255: { tab: { backgroundColor: '{colors.tui.orange255}' } },
+    }
   },
-  jsx: ['TuiTabs', 'Root', 'tab', 'content'],
+  jsx: ['TabsRoot',"TabsTab", 'TuiTab', 'TabsContent', 'Root', 'tab', 'content'],
 });
 const checkbox = defineSlotRecipe({
   className: 'tui-checkbox',

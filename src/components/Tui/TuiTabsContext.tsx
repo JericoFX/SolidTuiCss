@@ -4,7 +4,7 @@ export const Tab = createContext();
 
 export function TabsProvider(props) {
   const [tab, setTab] = createSignal('');
-  return <Tab.Provider value={{ tab, setTab }}>{props.children}</Tab.Provider>;
+  return <Tab.Provider  value={{ tab, setTab }}>{props.children}</Tab.Provider>;
 }
 
 export function useTabContext() {

@@ -24,7 +24,7 @@ import { TabsTab, TabsRoot, TabsContent } from './components/Tui/TuiTabs';
           gap={2}
         >
           <TuiWindow w='full' h='full' backgroundColor='RedBlack' sizes='large'>
-            <TabsRoot>
+            <TabsRoot colors="Black255">
               <TabsTab id='tab-1'>Tab 1</TabsTab>
               <TabsTab id='tab-2'>Tab 2</TabsTab>
               <TabsTab id='tab-3'>Tab 3</TabsTab>
