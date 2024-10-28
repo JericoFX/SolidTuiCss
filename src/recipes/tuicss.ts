@@ -76,7 +76,7 @@ const windows = defineRecipe({
   base: {
     backgroundColor: '{colors.tui.blue168}',
     padding: '.0625rem',
-    display: 'inline-block',
+
     position: 'relative',
     boxShadow: '.625rem .625rem black',
     color: '{colors.tui.white255}',
@@ -134,12 +134,12 @@ const windows = defineRecipe({
         maxH: '10vh',
       },
       medium: {
-        maxW: '30vw',
-        maxH: '15vh',
+        maxW: '65%',
+        maxH: '65%',
       },
       large: {
-        maxW: '50vw',
-        maxH: '25vh',
+        maxW: '90%',
+        maxH: '90%',
       },
     },
   },
@@ -379,6 +379,7 @@ const input = defineSlotRecipe({
       outline: 0,
       border: 'none',
       borderRadius: 0,
+      padding: '.03125rem .0625rem',
       verticalAlign: 'middle',
       _focus: {
         backgroundColor: 'rgb(255, 255, 0) !important',

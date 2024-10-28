@@ -17,7 +17,7 @@ const TuiInput: Component<TuiInputProps> = (props: TuiInputProps) => {
   return (
     <>
       <label class={recipe.label}>{props.label}</label>
-      <input {...props} class={recipe.input}></input>
+      <input type='text' {...props} class={recipe.input}></input>
     </>
   );
 };

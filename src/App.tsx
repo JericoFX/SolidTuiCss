@@ -25,14 +25,11 @@ import TuiProgressBar from './components/Tui/TuiProgressBar';
           justifyContent='center'
           gap={2}
         >
-          <TuiWindow backgroundColor='RedBlack' sizes='large'>
-            <Box w='50vw' h='20vh'>
-              <TuiProgressBar
-                backgroundColor={'GreenWhite'}
-                foregroundColor={'PurpleBlack'}
-                width={50}
-              ></TuiProgressBar>
-            </Box>
+          <TuiWindow w='full' h='full' backgroundColor='RedBlack' sizes='large'>
+            a
+            <TuiWindow p='1' w='full' backgroundColor='CyanBlack' sizes='small'>
+              <TuiInput label='Wachin' size='sm'></TuiInput>
+            </TuiWindow>
           </TuiWindow>
         </VStack>
       </TuiScreenLarge>
