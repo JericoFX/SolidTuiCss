@@ -1145,8 +1145,16 @@ const tabs = defineSlotRecipe({
         backgroundColor: 'rgb(168, 168, 168)',
         color: 'rgb(0, 0, 168)',
       },
+      "&.active":{
+        backgroundColor: "rgb(168, 168, 168)",
+        color: "rgb(0, 0, 168)" 
+      }
     },
     content: {
+      "& __tui-Root.active":{
+        backgroundColor: 'rgb(168, 168, 168)',
+        color: 'rgb(0, 0, 168)',
+      },
       display: 'none',
     },
   },
