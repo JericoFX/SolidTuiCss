@@ -203,7 +203,7 @@ const dropdown = defineSlotRecipe({
         margin: '.375rem',
       },
       '& ul li a:hover': {
-        backgroundColor: 'rgb(0, 168, 0)',
+        backgroundColor: '{colors.tui.green168}',
       },
     },
   },
@@ -218,6 +218,16 @@ const dropdown = defineSlotRecipe({
         },
       },
     },
+    hoverColor:{
+      red:{
+        content:{
+          '& ul li a:hover':{
+            backgroundColor: '{colors.tui.red168}'  
+          }
+         }
+      }
+   
+    }
   },
   jsx: ['TuiDropdown', 'Dropdown', 'TuiOption', 'Option', 'ul', 'li', 'a'],
 });
@@ -373,7 +383,7 @@ const input = defineSlotRecipe({
   description: 'Input',
   slots: ['input', 'label'],
   base: {
-    input: {
+    input:{
       backgroundColor: 'rgb(0, 0, 0)',
       color: 'white',
       outline: 0,
@@ -381,10 +391,12 @@ const input = defineSlotRecipe({
       borderRadius: 0,
       padding: '.03125rem .0625rem',
       verticalAlign: 'middle',
+      width: '100%',
       _focus: {
         backgroundColor: 'rgb(255, 255, 0) !important',
         color: 'black !important',
       },
+
     },
     label: {
       color: 'white',
