@@ -1,4 +1,3 @@
-
 import { Box, VStack } from '../styled-system/jsx';
 import { TuiScreenLarge } from './components/Tui/TuiScreen';
 import TuiWindow from './components/Tui/TuiWindow';
@@ -24,19 +23,13 @@ import { TabsTab, TabsRoot, TabsContent } from './components/Tui/TuiTabs';
           gap={2}
         >
           <TuiWindow w='full' h='full' backgroundColor='RedBlack' sizes='large'>
-            <TabsRoot colors="Black255">
+            <TabsRoot backgroundColor='Black168'>
               <TabsTab id='tab-1'>Tab 1</TabsTab>
               <TabsTab id='tab-2'>Tab 2</TabsTab>
               <TabsTab id='tab-3'>Tab 3</TabsTab>
-              <TabsContent id="tab-1">
-Tab1
-              </TabsContent>
-              <TabsContent id="tab-2">
-Tab2
-              </TabsContent>
-              <TabsContent id="tab-3">
-Tab3
-              </TabsContent>
+              <TabsContent id='tab-1'>Tab1</TabsContent>
+              <TabsContent id='tab-2'>Tab2</TabsContent>
+              <TabsContent id='tab-3'>Tab3</TabsContent>
             </TabsRoot>
             <TuiWindow p='1' w='full' backgroundColor='CyanBlack' sizes='small'>
               <TuiInput label='Wachin' size='sm'></TuiInput>

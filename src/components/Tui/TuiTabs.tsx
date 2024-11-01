@@ -1,41 +1,52 @@
-
-import { TabsProvider, useTabContext } from "./TuiTabsContext"
-import { tabs } from "../../../styled-system/recipes"
-import { Component, JSX, createUniqueId } from "solid-js";
-
-export const TabsRoot: Component<{ children: JSX.Element }> = (props) => {
-    const r = tabs({colors:props.colors})
-    return (
-        <TabsProvider>
-            {' '}
-            <div class={r.Root}>
-                <ul>
-                    {props.children}
-                </ul>
-
-            </div>
-        </TabsProvider>
-    );
+import { TabsProvider, useTabContext } from './TuiTabsContext';
+import { tabs, type TabsVariantProps } from '../../../styled-system/recipes';
+import { Component, JSX, createUniqueId } from 'solid-js';
+type R = TabsVariantProps & {
+  children: JSX.Element;
+  backgroundColor?: string;
+  textColor?: string;
+  id: strting;
+};
+export const TabsRoot: Component<R> = (props) => {
+  const r = tabs({
+    backgroundColor: props.backgroundColor,
+    textColor: props.textColor,
+  });
+  return (
+    <TabsProvider>
+      {' '}
+      <div class={r.Root}>
+        <ul>{props.children}</ul>
+      </div>
+    </TabsProvider>
+  );
 };
 
-export const TabsTab: Component<{ children: JSX.Element }> = (props) => {
-    const r = tabs()
-    const { tab, setTab } = useTabContext()
-    return (
-        <li ><a onClick={() => setTab(props.id)} class={`${r.tab} ${tab() === props.id ? "active" : ''}`} id={props.id}>{props.children}</a></li>
-    )
-}
+export const TabsTab: Component<R> = (props) => {
+  const r = tabs();
+  const { tab, setTab } = useTabContext();
+  return (
+    <li>
+      <a
+        onClick={() => setTab(props.id)}
+        class={`${r.tab} ${tab() === props.id ? 'active' : ''}`}
+        id={props.id}
+      >
+        {props.children}
+      </a>
+    </li>
+  );
+};
 
-export const TabsContent: Component<{ children: JSX.Element }> = (props) => {
-    const r = tabs()
-    const { tab, setTab } = useTabContext()
-    return (
-        <div id={props.id} class={`${props.id !== tab() ? r.content : "active"}`}>
-            {props.children}
-        </div>
-    )
-}
-
+export const TabsContent: Component<R> = (props) => {
+  const r = tabs({ ...props });
+  const { tab, setTab } = useTabContext();
+  return (
+    <div id={props.id} class={`${props.id !== tab() ? r.content : 'active'}`}>
+      {props.children}
+    </div>
+  );
+};
 
 // <div class="tui-tabs">
 //     <ul>

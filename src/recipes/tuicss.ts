@@ -1136,24 +1136,23 @@ const tabs = defineSlotRecipe({
         MozUserSelect: 'none',
         MsUserSelect: 'none',
       },
-      '& div':{
+      '& div': {
         backgroundColor: '{colors.tui.white168}',
-        color: 'rgb(0, 0, 168)',
-      }
+        color: '{colors.tui.white255}',
+      },
     },
     tab: {
       padding: '0.125rem 0.625rem 0px 0.625rem',
       color: '{colors.tui.black255}',
       cursor: 'pointer',
       _active: {
-        backgroundColor: 'rgb(168, 168, 168)',
+        backgroundColor: '{colors.tui.white168}',
         color: 'rgb(0, 0, 168)',
       },
-      "&.active":{
-        backgroundColor: "rgb(168, 168, 168)",
-        color: "rgb(0, 0, 168)" 
+      '&.active': {
+        backgroundColor: '{colors.tui.white168}',
+        color: '{colors.tui.cyan168}',
       },
-     
     },
     content: {
       display: 'none',
@@ -1169,19 +1168,27 @@ const tabs = defineSlotRecipe({
         },
       },
     },
-    colors:{
-      Black255: { tab: { backgroundColor: '{colors.tui.black255}' } },
-      Blue255: { tab: { backgroundColor: '{colors.tui.blue255}' } },
-      Green255: { tab: { backgroundColor: '{colors.tui.green255}' } },
-      Cyan255: { tab: { backgroundColor: '{colors.tui.cyan255}' } },
-      Red255: { tab: { backgroundColor: '{colors.tui.red255}' } },
-      Purple255: { tab: { backgroundColor: '{colors.tui.purple255}' } },
-      Yellow255: { tab: { backgroundColor: '{colors.tui.yellow255}' } },
-      White255: { tab: { backgroundColor: '{colors.tui.white255}' } },
-      Orange255: { tab: { backgroundColor: '{colors.tui.orange255}' } },
-    }
+    backgroundColor: {
+      Black168: { Root: { backgroundColor: '{colors.tui.black168}' } },
+      Blue168: { Root: { backgroundColor: '{colors.tui.blue168}' } },
+      Green168: { Root: { backgroundColor: '{colors.tui.green168}' } },
+      Cyan168: { Root: { backgroundColor: '{colors.tui.cyan168}' } },
+      Red168: { Root: { backgroundColor: '{colors.tui.red168}' } },
+      Purple168: { Root: { backgroundColor: '{colors.tui.purple168}' } },
+      Yellow168: { Root: { backgroundColor: '{colors.tui.yellow168}' } },
+      White168: { Root: { backgroundColor: '{colors.tui.white168}' } },
+      Orange168: { Root: { backgroundColor: '{colors.tui.orange168}' } },
+    },
   },
-  jsx: ['TabsRoot',"TabsTab", 'TuiTab', 'TabsContent', 'Root', 'tab', 'content'],
+  jsx: [
+    'TabsRoot',
+    'TabsTab',
+    'TuiTab',
+    'TabsContent',
+    'Root',
+    'tab',
+    'content',
+  ],
 });
 const checkbox = defineSlotRecipe({
   className: 'tui-checkbox',
