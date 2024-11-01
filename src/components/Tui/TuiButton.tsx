@@ -1,5 +1,6 @@
 import { button } from '../../../styled-system/recipes';
-import { styled } from '../../../styled-system/jsx';
-const TuiButton = styled('button', button);
+import { Box, styled } from '../../../styled-system/jsx';
+
+const TuiButton = styled(styled.button, button);
 
 export default TuiButton;

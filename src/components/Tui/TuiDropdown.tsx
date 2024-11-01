@@ -13,7 +13,7 @@ type TuiOption = DropdownVariantProps &
   };
 
 export const TuiTitle: Component<TuiOption> = (props) => {
-  const r = dropdown();
+  const r = dropdown({ ...props });
   return (
     <li class={r.dropdown}>
       <span>{props.title}</span>
@@ -26,15 +26,15 @@ export const TuiOption: Component<TuiOption> = (props) => {
   return (
     <li class='tui-dropdown-selector'>
       <TuiShortcut>{props.shortcut}</TuiShortcut>
-      <a {...props}>{props.children}</a>
+      <a>{props.children}</a>
     </li>
   );
 };
 
 export const TuiDropdown: Component<TuiOption> = (props) => {
-  const r = dropdown();
+  const r = dropdown({ ...props });
   return (
-    <div {...props} class={r.content}>
+    <div class={r.content}>
       <ul>{props.children}</ul>
     </div>
   );

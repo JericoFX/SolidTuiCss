@@ -76,9 +76,8 @@ const windows = defineRecipe({
   base: {
     backgroundColor: '{colors.tui.blue168}',
     padding: '.0625rem',
-
     position: 'relative',
-    boxShadow: '.625rem .625rem black',
+    boxShadow: '{shadows.none}',
     color: '{colors.tui.white255}',
   },
   variants: {
@@ -142,10 +141,24 @@ const windows = defineRecipe({
         maxH: '90%',
       },
     },
+    shadow: {
+      none: { value: 'none !important' },
+      Shadow1: { boxShadow: '{shadows.Shadow1}' },
+      Shadow2: { boxShadow: '{shadows.Shadow2}' },
+      Shadow3: { boxShadow: '{shadows.Shadow3}' },
+      Shadow4: { boxShadow: '{shadows.Shadow4}' },
+      Shadow5: { boxShadow: '{shadows.Shadow5}' },
+      Shadow1left: { boxShadow: '{shadows.Shadow1left}' },
+      Shadowleft2: { boxShadow: '{shadows.Shadowleft2}' },
+      Shadowleft3: { boxShadow: '{shadows.Shadowleft3}' },
+      Shadowleft4: { boxShadow: '{shadows.Shadowleft4}' },
+      Shadowleft5: { boxShadow: '{shadows.Shadowleft5}' },
+    },
   },
   defaultVariants: {
     backgroundColor: 'RedBlack',
     sizes: 'large',
+    shadow: 'none',
   },
   jsx: ['TuiWindow', 'Window'],
 });
@@ -177,7 +190,6 @@ const dropdown = defineSlotRecipe({
   className: 'tui-dropdown',
   description: 'A dropdown',
   slots: ['dropdown', 'content'],
-
   base: {
     dropdown: {
       position: 'relative',
@@ -202,9 +214,6 @@ const dropdown = defineSlotRecipe({
         display: 'block !important',
         margin: '.375rem',
       },
-      '& ul li a:hover': {
-        backgroundColor: '{colors.tui.green168}',
-      },
     },
   },
   variants: {
@@ -218,17 +227,8 @@ const dropdown = defineSlotRecipe({
         },
       },
     },
-    hoverColor: {
-      red: {
-        content: {
-          '& ul li a:hover': {
-            backgroundColor: '{colors.tui.red168}',
-          },
-        },
-      },
-    },
   },
-  jsx: ['TuiDropdown', 'Dropdown', 'TuiOption', 'Option', 'ul', 'li', 'a'],
+  jsx: ['TuiDropdown', 'TuiOption', 'Option', 'ul', 'li', 'a'],
 });
 const fieldset = defineSlotRecipe({
   className: 'tui-fieldset',
@@ -498,6 +498,92 @@ const navbar = defineRecipe({
     '& ul li a': {
       display: 'block',
       userSelect: 'none',
+    },
+  },
+  variants: {
+    hoverColor: {
+      Black168: {
+        base: {
+          '& ul li': {
+            _hover: {
+              backgroundColor: '{colors.tui.black168}',
+            },
+          },
+        },
+      },
+
+      Blue168: {
+        base: {
+          '& ul li': {
+            _hover: {
+              backgroundColor: '{colors.tui.blue168}',
+            },
+          },
+        },
+      },
+      Green168: {
+        base: {
+          '& ul li': {
+            _hover: {
+              backgroundColor: '{colors.tui.green168}',
+            },
+          },
+        },
+      },
+      Cyan168: {
+        base: {
+          '& ul li': {
+            _hover: {
+              backgroundColor: '{colors.tui.cyan168}',
+            },
+          },
+        },
+      },
+      Red168: {
+        base: {
+          '& ul li': {
+            _hover: {
+              backgroundColor: '{colors.tui.red168}',
+            },
+          },
+        },
+      },
+      Purple168: {
+        base: {
+          '& ul li': {
+            _hover: {
+              backgroundColor: '{colors.tui.purple168}',
+            },
+          },
+        },
+      },
+      Yellow168: {
+        base: {
+          '& ul li': {
+            _hover: {
+              backgroundColor: '{colors.tui.yellow168}',
+            },
+          },
+        },
+      },
+      White168: {
+        base: {
+          '& ul li': {
+            _hover: {
+              backgroundColor: '{colors.tui.white168}',
+            },
+          },
+        },
+      },
+      Orange168: {
+        base: {
+          '& ul li': {
+            _hover: {
+              backgroundColor: '{colors.tui.orange168}',
+            },
+          },
+        },
+      },
     },
   },
   jsx: ['TuiNav', 'navbar', 'nav'],
@@ -1147,6 +1233,7 @@ const tabs = defineSlotRecipe({
         MsUserSelect: 'none',
       },
       '& div': {
+        padding: '0.325rem',
         backgroundColor: '{colors.tui.white168}',
         color: '{colors.tui.white255}',
       },
@@ -1165,6 +1252,7 @@ const tabs = defineSlotRecipe({
       },
     },
     content: {
+      padding: '0.625rem',
       display: 'none',
     },
   },
@@ -1381,4 +1469,5 @@ export const tuicss: Preset = {
       },
     },
   },
+  name: '',
 };

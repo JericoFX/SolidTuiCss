@@ -17,9 +17,9 @@ import { TuiDropdown, TuiOption, TuiTitle } from './components/Tui/TuiDropdown';
   return (
     <>
       <TuiScreenLarge bordered={true} backgroundColor='OrangeBlack' centered>
-        <TuiNav>
+        <TuiNav hoverColor={'Orange168'}>
           <TuiTitle title='Wachines'>
-            <TuiDropdown hoverColor='red'>
+            <TuiDropdown>
               <TuiOption>New Report</TuiOption>
               <TuiOption>New Report</TuiOption>
               <TuiOption>New Report</TuiOption>
@@ -41,6 +41,7 @@ import { TuiDropdown, TuiOption, TuiTitle } from './components/Tui/TuiDropdown';
           gap={2}
         >
           <TuiWindow
+            shadow='Shadow1'
             w='full'
             h='full'
             backgroundColor='OrangeBlack'
@@ -53,6 +54,7 @@ import { TuiDropdown, TuiOption, TuiTitle } from './components/Tui/TuiDropdown';
               <TabsContent id='tab-1'>
                 {' '}
                 <TuiWindow
+                  shadow='none'
                   p='1'
                   w='full'
                   backgroundColor='CyanBlack'
