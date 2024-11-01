@@ -203,7 +203,7 @@ const dropdown = defineSlotRecipe({
         margin: '.375rem',
       },
       '& ul li a:hover': {
-        backgroundColor: 'rgb(0, 168, 0)',
+        backgroundColor: '{colors.tui.green168}',
       },
     },
   },
@@ -214,6 +214,15 @@ const dropdown = defineSlotRecipe({
           '& tr td': {
             color: 'rgb(168, 168, 168)',
             cursor: 'not-allowed',
+          },
+        },
+      },
+    },
+    hoverColor: {
+      red: {
+        content: {
+          '& ul li a:hover': {
+            backgroundColor: '{colors.tui.red168}',
           },
         },
       },
@@ -381,6 +390,7 @@ const input = defineSlotRecipe({
       borderRadius: 0,
       padding: '.03125rem .0625rem',
       verticalAlign: 'middle',
+      width: '100%',
       _focus: {
         backgroundColor: 'rgb(255, 255, 0) !important',
         color: 'black !important',
@@ -861,7 +871,7 @@ const radio = defineSlotRecipe({
   defaultVariants: {
     disabled: false,
   },
-  jsx: ['TuiRadio'],
+  jsx: ['TuiRadio', 'input'],
 });
 const shadow = defineRecipe({
   className: 'tui-shadow',

@@ -51,11 +51,11 @@ hr {
   border-bottom: 0.125rem solid rgb(255, 255, 255);
 }
 
-input,
+/* input,
 select,
 textarea {
   width: 12.5rem;
-}
+} */
 body {
   margin: 0px;
 }
